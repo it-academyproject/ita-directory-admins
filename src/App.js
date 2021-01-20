@@ -54,15 +54,13 @@ const App = () => {
 				type="text"
 				placeholder="Texto placeholder"
 				// defaultValue="Hola clase"
-				onChange={handleChange}
+				// onChange={handleChange}
 				value={value}
 				disabled={isDisabled}
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 			/>
-			<button disabled={handleDisabled} onClick={handleDisabled}>
-				DISABLE ME
-			</button>
+			<button onClick={handleDisabled}>DISABLE ME</button>
 		</>
 		// <Switch>
 		// 	{/* Userflow */}
