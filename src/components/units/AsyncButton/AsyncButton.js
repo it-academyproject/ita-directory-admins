@@ -40,11 +40,19 @@ const AsyncButton = ({
 			style={{...buttonStyles}}
 		>
 			{iconPosition === "left" && (
-				<FontAwesomeIcon icon={isLoading ? faSpinner : icon} style={{...iconStyles}} />
+				isLoading?
+					<FontAwesomeIcon icon={faSpinner} style={{...iconStyles}} />
+				: icon? 
+					<FontAwesomeIcon icon={icon} style={{...iconStyles}} />
+				: null
 			)}
 			<span style={{...textStyles}}>{isLoading ? loadingText : text}</span>
 			{iconPosition === "right" && (
-				<FontAwesomeIcon icon={isLoading ? faSpinner : icon} style={{...iconStyles}} />
+				isLoading?
+					<FontAwesomeIcon icon={faSpinner} style={{...iconStyles}} />
+				: icon? 
+					<FontAwesomeIcon icon={icon} style={{...iconStyles}} />
+				: null
 			)}
 		</StyledButton>
 	);
@@ -57,7 +65,7 @@ AsyncButton.propTypes = {
 	isLoading: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 	disabled: PropTypes.bool,
-	icon: PropTypes.string,
+	//icon: PropTypes.object,
 	iconPosition: PropTypes.string,
 	className: PropTypes.string,
 	buttonStyles: PropTypes.string,
