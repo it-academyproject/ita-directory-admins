@@ -1,37 +1,75 @@
 import React from "react";
 import PropTypes from "prop-types";
+//Style
+import StyledInput from "./styles";
 
 const Input = ({
 	type,
-	placeholder,
-	defaultValue,
+	value,
 	onChange,
+	minlength,
+	disabled,
+	onKeyPress,
 	onFocus,
 	onBlur,
-	disabled,
-	error,
-	success,
+	placeholder,
+	required,
+	size,
+	id,
+	name,
+	inputStyles,
+	labelText,
+	labelStyles,
+	errorText,
+	errorStyles,
+	className,
 }) => {
 	return (
-		<input
-			type={type}
-			placeholder={placeholder}
-			defaultValue={defaultValue}
-			disabled={disabled}
-			onChange={onChange}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			error={error}
-			success={success}
-		/>
+		<>
+			<label style={{...labelStyles}} id={id}>
+				{labelText}
+			</label>
+			<StyledInput
+				type={type}
+				value={value}
+				onChange={onChange}
+				minLength={minlength}
+				disabled={disabled}
+				onKeyPress={onKeyPress}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				placeholder={placeholder}
+				required={required}
+				size={size}
+				id={id}
+				name={name}
+				style={{...inputStyles}}
+				className={`${className} ${disabled ? "disabled" : ""}`}
+			/>
+
+			<span style={{...errorStyles}}>{errorText}</span>
+		</>
 	);
 };
-
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired,
+	value: PropTypes.any,
+	onChange: PropTypes.func,
+	minlength: PropTypes.number,
 	disabled: PropTypes.bool,
-	error: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onBlur: PropTypes.func,
+	placeholder: PropTypes.string,
+	required: PropTypes.bool,
+	size: PropTypes.number,
+	id: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	inputStyles: PropTypes.object,
+	labelStyles: PropTypes.object,
+	errorText: PropTypes.string,
+	errorStyles: PropTypes.object,
+	className: PropTypes.string,
 };
 
 export default Input;

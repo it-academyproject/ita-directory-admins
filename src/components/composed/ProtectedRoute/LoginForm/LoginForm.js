@@ -1,68 +1,72 @@
-import React , {useState} from "react";
+import React, {useState} from "react";
 //import PropTypes from "prop-types";
 
 //Styles
 import StyledForm from "./styles";
 
 //Components
-import AsyncButton from "components/units/AsyncButton/AsyncButton"
+import AsyncButton from "components/units/AsyncButton/AsyncButton";
+import Input from "components/units/Input/Input";
 
-const LoginForm = ({
-    id,
-    name,
-    className,
-    method,
-    onSubmit,
-    action,
-    formStyle,
-}) =>{
-    //input state
-    const [userInput, setuserInput] = useState("");
-    const [passwordInput, setpasswordInput] = useState("")
-    //button state
-    const [loadingState, setloadingState] = useState(false);
+const LoginForm = ({id, name, className, method, action, formStyle}) => {
+	//input state
+	const [userInput, setuserInput] = useState("");
+	const [passwordInput, setpasswordInput] = useState("");
+	//button state
+	const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
 	const [animatedState, setanimatedState] = useState(false);
 
-    //form method
-    const handleSubmit=(e)=>{
-        e.preventDefault();
-        console.log("submitted", userInput, passwordInput)
-
-    }
-    //button method
-	const handleClick = async () => {
+	//form method
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 		setloadingState(true);
 		setdisabledState(true);
 		setanimatedState(true);
 		try {
 			await new Promise((resolve) => setTimeout(resolve, 2000));
-            console.log("clicked");
-            //handleSubmit();
-            
 		} catch (err) {
 			console.log(err);
 		}
 		setloadingState(false);
 		setdisabledState(false);
-        setanimatedState(false);
-    };
+		setanimatedState(false);
+		console.log("submitted", userInput, passwordInput);
+	};
 
+	//input
+	const handleChange = (e) => {
+		if (e.target.name === "userInput") {
+			setuserInput(e.target.value);
+		} else if (e.target.name === "passwordInput") {
+			setpasswordInput(e.target.value);
+		}
+	};
 
-    //input
-    const handleChange = (e) =>{
-        if (e.target.name==="userInput"){
-            setuserInput(e.target.value);
-        }else if (e.target.name==="passwordInput"){
-            setpasswordInput(e.target.value);
-        }
-    }
+	//button
+	const handleClick = () => {
+		console.log("clicked");
+	};
 
-    return(
-        <StyledForm id={id} name={name} className={className} method={method} onSubmit={(e)=>handleSubmit(e)} action={action} formStyle={formStyle}>
-            <input name="userInput" value={userInput} onChange={handleChange}/>
-            <input name="passwordInput" value={passwordInput} onChange={handleChange}/>
-            <AsyncButton
+	return (
+		<StyledForm
+			id={id}
+			name={name}
+			className={className}
+			method={method}
+			onSubmit={(e) => handleSubmit(e)}
+			action={action}
+			formStyle={formStyle}
+			autocomplete="off"
+		>
+			<Input type="email" name="userInput" value={userInput} onChange={handleChange} />
+			<Input
+				type="password"
+				name="passwordInput"
+				value={passwordInput}
+				onChange={handleChange}
+			/>
+			<AsyncButton
 				text="Acceder"
 				loadingText="Accediendo"
 				iconPosition="left"
@@ -71,10 +75,10 @@ const LoginForm = ({
 				isLoading={loadingState}
 				animated={animatedState}
 				disabled={disabledState}
-				onClick={() => handleClick()}
+				onClick={handleClick}
 			/>
-        </StyledForm>
-    );
-}
+		</StyledForm>
+	);
+};
 
 export default LoginForm;
