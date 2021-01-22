@@ -16,14 +16,21 @@ const LoginForm = ({
     action,
     formStyle,
 }) =>{
-    //form
+    //input state
     const [userInput, setuserInput] = useState("");
     const [passwordInput, setpasswordInput] = useState("")
-    //button
+    //button state
     const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
 	const [animatedState, setanimatedState] = useState(false);
 
+    //form method
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        console.log("submitted", userInput, passwordInput)
+
+    }
+    //button method
 	const handleClick = async () => {
 		setloadingState(true);
 		setdisabledState(true);
@@ -31,7 +38,7 @@ const LoginForm = ({
 		try {
 			await new Promise((resolve) => setTimeout(resolve, 2000));
             console.log("clicked");
-            handleSubmit();
+            //handleSubmit();
             
 		} catch (err) {
 			console.log(err);
@@ -41,11 +48,8 @@ const LoginForm = ({
         setanimatedState(false);
     };
 
-    const handleSubmit=()=>{
-        console.log("submitted", userInput, passwordInput)
 
-    }
-
+    //input
     const handleChange = (e) =>{
         if (e.target.name==="userInput"){
             setuserInput(e.target.value);
@@ -55,14 +59,14 @@ const LoginForm = ({
     }
 
     return(
-        <StyledForm id={id} name={name} className={className} method={method} onSubmit={()=>handleSubmit()} action={action} formStyle={formStyle}>
+        <StyledForm id={id} name={name} className={className} method={method} onSubmit={(e)=>handleSubmit(e)} action={action} formStyle={formStyle}>
             <input name="userInput" value={userInput} onChange={handleChange}/>
             <input name="passwordInput" value={passwordInput} onChange={handleChange}/>
             <AsyncButton
 				text="Acceder"
 				loadingText="Accediendo"
 				iconPosition="left"
-				type="button"
+				type="submit"
 				className="primary"
 				isLoading={loadingState}
 				animated={animatedState}
