@@ -44,7 +44,6 @@ const AsyncButton = ({
 				) : icon ? (
 					<FontAwesomeIcon icon={icon} style={{...iconStyles}} />
 				) : null)}
-
 			<span style={{...textStyles}}>{isLoading ? loadingText : text}</span>
 			{iconPosition === "right" &&
 				(isLoading ? (
@@ -66,7 +65,7 @@ AsyncButton.propTypes = {
 	//icon: PropTypes.object,
 	iconPosition: PropTypes.string,
 	className: PropTypes.string,
-	buttonStyles: PropTypes.object,
+	buttonStyles: PropTypes.string,
 	textStyles: PropTypes.string,
 	iconStyles: PropTypes.string,
 	animated: PropTypes.bool,
