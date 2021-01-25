@@ -46,10 +46,9 @@ const Input = ({
 				className={`${className}  ${error ? "error" : ""}  ${disabled ? "disabled" : ""}  `}
 			/>
 
-			<span
-				style={{...errorStyles}}
-				/* style={{color: `${emailError} ? 'Colors.redColor' : "" `}} */
-			>{` ${error ? errorText : ""}`}</span>
+			{error ? (
+				<span dangerouslySetInnerHTML={{__html: errorText}} style={{...errorStyles}}></span>
+			) : null}
 		</div>
 	);
 };
@@ -69,7 +68,7 @@ Input.propTypes = {
 	inputStyles: PropTypes.object,
 	labelStyles: PropTypes.object,
 	errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-	errorStyles: PropTypes.object,
+	errorStyles: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	className: PropTypes.string,
 	divStyles: PropTypes.object,
 	error: PropTypes.bool,
