@@ -96,7 +96,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 			className={className}
 			method={method}
 			onSubmit={(e) => handleSubmit(e)}
-			onSubmit={onSubmit}
 			action={action}
 			formStyle={formStyle}
 			autocomplete="off"
