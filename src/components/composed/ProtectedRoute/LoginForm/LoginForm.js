@@ -12,6 +12,11 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 	//input state
 	const [userInput, setuserInput] = useState("");
 	const [passwordInput, setpasswordInput] = useState("");
+	const [isUserValid, setisUserValid] = useState(true);
+	const [isPasswordValid, setisPasswordValid] = useState(true);
+	//
+	const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	const passFormat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 	//button state
 	const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
@@ -20,6 +25,9 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 	//form method
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (!isUserValid || !isPasswordValid) {
+			return;
+		}
 		setloadingState(true);
 		setdisabledState(true);
 		setanimatedState(true);
@@ -38,11 +46,23 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 	const handleChange = (e) => {
 		if (e.target.name === "userInput") {
 			setuserInput(e.target.value);
+			if (userInput.match(mailFormat)) {
+				setisUserValid(true);
+				console.log("mail ok");
+			} else {
+				setisUserValid(false);
+			}
 		} else if (e.target.name === "passwordInput") {
 			setpasswordInput(e.target.value);
+			if (passwordInput.match(passFormat)) {
+				setisPasswordValid(true);
+				console.log("password ok");
+			} else {
+				setisPasswordValid(false);
+			}
 		}
 	};
-
+	//useEffect ???
 	//button
 	const handleClick = () => {
 		console.log("clicked");
@@ -59,12 +79,19 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 			formStyle={formStyle}
 			autocomplete="off"
 		>
-			<Input type="email" name="userInput" value={userInput} onChange={handleChange} />
+			<Input
+				type="email"
+				name="userInput"
+				value={userInput}
+				onChange={handleChange}
+				valid={isUserValid}
+			/>
 			<Input
 				type="password"
 				name="passwordInput"
 				value={passwordInput}
 				onChange={handleChange}
+				valid={isPasswordValid}
 			/>
 			<AsyncButton
 				text="Acceder"

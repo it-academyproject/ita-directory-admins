@@ -23,6 +23,7 @@ const Input = ({
 	errorText,
 	errorStyles,
 	className,
+	valid,
 }) => {
 	return (
 		<>
@@ -44,7 +45,9 @@ const Input = ({
 				id={id}
 				name={name}
 				style={{...inputStyles}}
-				className={`${className} ${disabled ? "disabled" : ""}`}
+				className={`${className} ${valid ? "success" : "error"} ${
+					disabled ? "disabled" : ""
+				}`}
 			/>
 
 			<span style={{...errorStyles}}>{errorText}</span>
@@ -70,6 +73,7 @@ Input.propTypes = {
 	errorText: PropTypes.string,
 	errorStyles: PropTypes.object,
 	className: PropTypes.string,
+	valid: PropTypes.bool,
 };
 
 export default Input;
