@@ -50,6 +50,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const handleBlur = () => {
 		console.log("He pinchado fuera");
 	};
+
 	//button state
 	const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
@@ -130,13 +131,8 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 					marginLeft: 5,
 				}}
 				error={isEmailError}
-				errorText="error text if needed"
-				/* errorText={
-					<p>
-						El email no se puede modificar.Ponte en
-						<span>contacto</span>si necesitas actualizarlo
-					</p>
-				} */
+				errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
+				<span style='color: red'> STYLE </span>actualizarlo</p>"
 				errorStyles={{
 					width: 258,
 					height: 15,
@@ -146,7 +142,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 					color: "#909090",
 					opacity: 1,
 					padding: 10,
-					marginBottom: 20,
+					marginBottom: 60,
 					marginLeft: 10,
 				}}
 				className="success"
