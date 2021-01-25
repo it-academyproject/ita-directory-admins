@@ -14,9 +14,7 @@ import LoginForm from "components/composed/ProtectedRoute/LoginForm/LoginForm";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
-
 	return (
-
 		<>
 			<LoginForm />
 		</>

@@ -10,36 +10,40 @@ const StyledButton = styled.button`
 	text-align: center;
 	font: normal normal normal 15px/22px Helvetica Neue;
 	letter-spacing: 0px;
-    width: 100%;
+	width: 100%;
 
-    &.primary{
-        background: transparent linear-gradient(98deg, ${Colors.lightPrimary} 0%, ${Colors.darkPrimary} 100%) 0% 0% no-repeat padding-box;
-        color: ${Colors.whiteColor};
-    }
-    &.disabled {
-        opacity: 0.57;
-        cursor: not-allowed;
-    }
-    &:hover{
-        filter: brightness(85%);
-    }
-    &.green {
-        background: transparent linear-gradient(98deg, ${Colors.lightGreen} 0%, ${Colors.darkGreen} 100%) 0% 0% no-repeat padding-box;
-        color: ${Colors.whiteColor};
-    }
-    &.delete{
-        background: ${Colors.redColor};
-        color: ${Colors.whiteColor};
-    }
-    &.update{
-        background: ${Colors.darkBlueColor};
-        color: ${Colors.whiteColor};
-    }
-    &.cancel{
-        background: ${Colors.whiteColor};
-        color: ${Colors.greyColor};;
-    }
-    &.animated {
+	&.primary {
+		background: transparent
+			linear-gradient(98deg, ${Colors.lightPrimary} 0%, ${Colors.darkPrimary} 100%) 0% 0%
+			no-repeat padding-box;
+		color: ${Colors.whiteColor};
+	}
+	&.disabled {
+		opacity: 0.57;
+		cursor: not-allowed;
+	}
+	&:hover {
+		filter: brightness(85%);
+	}
+	&.green {
+		background: transparent
+			linear-gradient(98deg, ${Colors.lightGreen} 0%, ${Colors.darkGreen} 100%) 0% 0%
+			no-repeat padding-box;
+		color: ${Colors.whiteColor};
+	}
+	&.delete {
+		background: ${Colors.redColor};
+		color: ${Colors.whiteColor};
+	}
+	&.update {
+		background: ${Colors.darkBlueColor};
+		color: ${Colors.whiteColor};
+	}
+	&.cancel {
+		background: ${Colors.whiteColor};
+		color: ${Colors.greyColor};
+	}
+	&.animated {
 		svg {
 			animation: rotation 0.8s ease-in-out infinite;
 		}
