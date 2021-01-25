@@ -2,14 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 //Style
 import StyledInput from "./styles";
+import Colors from "theme/Colors";
 
 const Input = ({
 	type,
 	value,
 	onChange,
-	minlength,
 	disabled,
-	onKeyPress,
 	onFocus,
 	onBlur,
 	placeholder,
@@ -23,19 +22,19 @@ const Input = ({
 	errorText,
 	errorStyles,
 	className,
+	divStyles,
+	error,
 }) => {
 	return (
-		<>
-			<label style={{...labelStyles}} id={id}>
+		<div style={{...divStyles}}>
+			<label htmlFor={name} style={{...labelStyles}} id={id}>
 				{labelText}
 			</label>
 			<StyledInput
 				type={type}
 				value={value}
 				onChange={onChange}
-				minLength={minlength}
 				disabled={disabled}
-				onKeyPress={onKeyPress}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				placeholder={placeholder}
@@ -44,19 +43,21 @@ const Input = ({
 				id={id}
 				name={name}
 				style={{...inputStyles}}
-				className={`${className} ${disabled ? "disabled" : ""}`}
+				className={`${className}  ${error ? "error" : ""}  ${disabled ? "disabled" : ""}  `}
 			/>
 
-			<span style={{...errorStyles}}>{errorText}</span>
-		</>
+			<span
+				style={{...errorStyles}}
+				/* style={{color: `${emailError} ? 'Colors.redColor' : "" `}} */
+			>{` ${error ? errorText : ""}`}</span>
+		</div>
 	);
 };
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	value: PropTypes.any,
 	onChange: PropTypes.func,
-	minlength: PropTypes.number,
-	disabled: PropTypes.bool,
+	disabled: PropTypes.string,
 	onClick: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
@@ -67,9 +68,11 @@ Input.propTypes = {
 	name: PropTypes.string.isRequired,
 	inputStyles: PropTypes.object,
 	labelStyles: PropTypes.object,
-	errorText: PropTypes.string,
+	errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	errorStyles: PropTypes.object,
 	className: PropTypes.string,
+	divStyles: PropTypes.object,
+	error: PropTypes.bool,
 };
 
 export default Input;

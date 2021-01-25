@@ -1,5 +1,5 @@
-import React from "react";
-import LoginForm from "components/composed/ProtectedRoute/LoginForm/LoginForm";
+import React, {useState} from "react";
+import Login from "screens/UserFlow/Login/Login";
 // import {Route, Switch} from "react-router-dom";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
@@ -16,7 +16,16 @@ import LoginForm from "components/composed/ProtectedRoute/LoginForm/LoginForm";
 const App = () => {
 	return (
 		<>
-			<LoginForm />
+			<Login
+				id="formOne" //sera un MAP de Json file
+				name="formOne" //sera un MAP de Json file
+				method="post"
+				action="urlDestino"
+				formStyle={{
+					display: "flex",
+					flexDirection: "column",
+				}}
+			/>
 		</>
 
 		// <Switch>
