@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 //Style
 import StyledInput from "./styles";
-import Colors from "theme/Colors";
 
 const Input = ({
 	type,

@@ -97,7 +97,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 			className={className}
 			method={method}
 			onSubmit={(e) => handleSubmit(e)}
-			onSubmit={onSubmit}
 			action={action}
 			formStyle={formStyle}
 			autocomplete="off"
@@ -205,14 +204,15 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 			/>
 		</StyledForm>
 	);
-	Login.propTypes = {
-		id: PropTypes.string,
-		name: PropTypes.string,
-		method: PropTypes.string,
-		action: PropTypes.string,
-		formStyle: PropTypes.object,
-		onSubmit: PropTypes.func,
-	};
+};
+
+Login.propTypes = {
+	id: PropTypes.string,
+	name: PropTypes.string,
+	method: PropTypes.string,
+	action: PropTypes.string,
+	formStyle: PropTypes.object,
+	onSubmit: PropTypes.func,
 };
 
 export default Login;
