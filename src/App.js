@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import Login from "screens/UserFlow/Login/Login";
 // import {Route, Switch} from "react-router-dom";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
-import Input from "components/units/Input/Input";
-import axios from "axios";
+// import axios from "axios";
 
 // Pages
 // import Home from "screens/Home";
@@ -14,54 +14,20 @@ import axios from "axios";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
-	const [value, setValue] = useState("");
-	const handleChange = (e) => {
-		setValue(e.target.value);
-	};
-
-	// Handle disabled
-	const [isDisabled, setIsDisabled] = useState(false);
-	const handleDisabled = async () => {
-		// AQUI MI FUNCIÓN
-		setIsDisabled(true);
-		try {
-			await axios.get("mi-url", {params: {hola: "adios"}});
-			setIsDisabled(false);
-		} catch (error) {
-			setIsDisabled(false);
-			console.log(error);
-		}
-
-		// CON SET TIMEOUT
-		setIsDisabled(true);
-		setTimeout(() => {
-			setIsDisabled(false);
-		}, 3000);
-	};
-
-	// Handle Click
-	const handleFocus = () => {
-		console.log("HE PINCHADO DENTRO");
-	};
-
-	const handleBlur = () => {
-		console.log("HE PINCHADO FUERA");
-	};
-
 	return (
 		<>
-			<Input
-				type="text"
-				placeholder="Texto placeholder"
-				// defaultValue="Hola clase"
-				// onChange={handleChange}
-				value={value}
-				disabled={isDisabled}
-				onFocus={handleFocus}
-				onBlur={handleBlur}
+			<Login
+				id="formOne" //sera un MAP de Json file
+				name="formOne" //sera un MAP de Json file
+				method="post"
+				action="urlDestino"
+				formStyle={{
+					display: "flex",
+					flexDirection: "column",
+				}}
 			/>
-			<button onClick={handleDisabled}>DISABLE ME</button>
 		</>
+
 		// <Switch>
 		// 	{/* Userflow */}
 		// 	<Route exact path="/login" component={Login} />
