@@ -7,6 +7,7 @@ const StyledFooter = styled.footer`
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			margin: 20px;
 		}
 		p {
 			text-align: left;
@@ -30,6 +31,7 @@ const StyledFooter = styled.footer`
 			display: flex;
 			flex-wrap: wrap;
 			/* 	justify-content: space-between; */
+			margin-left: 40px;
 		}
 		p {
 			text-align: center;
@@ -38,7 +40,7 @@ const StyledFooter = styled.footer`
 			color: ${Colors.blackColor};
 			text-transform: uppercase;
 			opacity: 1;
-			padding-left: 20px;
+			padding-left: 25px;
 		}
 		ul {
 			text-align: center;

@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import StyledInput from "./styles";
 import Colors from "theme/Colors";
 
-//Style
-import StyledInput from "./styles";
-
 const Input = ({
 	type,
 	value,

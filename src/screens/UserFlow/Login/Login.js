@@ -8,7 +8,6 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Footer from "layout/Footer/Footer";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	//input - state
@@ -203,7 +202,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 				onClick={handleClick}
 				buttonStyles={{marginLeft: 10, marginBottom: 30, marginRight: 40, marginTop: 20}}
 			/>
-			<Footer />
 		</StyledForm>
 	);
 	Login.propTypes = {
