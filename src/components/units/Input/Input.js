@@ -49,8 +49,11 @@ const Input = ({
 					disabled ? "disabled" : ""
 				}`}
 			/>
-
-			<span style={{...errorStyles}}>{errorText}</span>
+			{!valid ? (
+				<span style={{display: "block", ...errorStyles}}>
+					<div dangerouslySetInnerHTML={{__html: errorText}} />
+				</span>
+			) : null}
 		</>
 	);
 };

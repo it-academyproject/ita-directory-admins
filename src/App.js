@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import LoginForm from "components/composed/ProtectedRoute/LoginForm/LoginForm";
+import Header from "components/composed/ProtectedRoute/Header/Header";
 // import {Route, Switch} from "react-router-dom";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
@@ -14,10 +15,10 @@ import LoginForm from "components/composed/ProtectedRoute/LoginForm/LoginForm";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
-
+const [isLoggedIn, setisLoggedIn] = useState(false)
 	return (
-
 		<>
+			<Header isLoggedIn={isLoggedIn}/>
 			<LoginForm />
 		</>
 

@@ -85,6 +85,11 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 				value={userInput}
 				onChange={handleChange}
 				valid={isUserValid}
+				errorText="
+					<p>
+						Usa un <a href=http://www.google.com>email</a> válido
+					</p>
+				"
 			/>
 			<Input
 				type="password"
@@ -92,6 +97,7 @@ const LoginForm = ({id, name, className, method, action, formStyle}) => {
 				value={passwordInput}
 				onChange={handleChange}
 				valid={isPasswordValid}
+				errorText="Usa una contraseña válida"
 			/>
 			<AsyncButton
 				text="Acceder"
