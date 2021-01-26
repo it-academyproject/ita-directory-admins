@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Login from "screens/UserFlow/Login/Login";
+import Header from "components/layout/Header/Header";
 // import {Route, Switch} from "react-router-dom";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
@@ -14,8 +15,10 @@ import Login from "screens/UserFlow/Login/Login";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	return (
 		<>
+			<Header isLoggedIn={isLoggedIn} title="Título" />
 			<Login
 				id="formOne" //sera un MAP de Json file
 				name="formOne" //sera un MAP de Json file

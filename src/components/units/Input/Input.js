@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import StyledInput from "./styles";
 import Colors from "theme/Colors";
 
+//Style
+import StyledInput from "./styles";
+
 const Input = ({
 	type,
 	value,
@@ -52,7 +55,6 @@ const Input = ({
 		</div>
 	);
 };
-
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	value: PropTypes.any,
