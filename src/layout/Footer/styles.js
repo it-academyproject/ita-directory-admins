@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Colors from "theme/Colors";
 
 const StyledFooter = styled.footer`
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: 640px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			margin: 20px;
+			padding: 2px 15vw;
 		}
 		p {
 			text-align: left;
@@ -25,13 +25,15 @@ const StyledFooter = styled.footer`
 			opacity: 1;
 			list-style-type: none;
 		}
+		hr {
+			margin: 2px 15vw;
+		}
 	}
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 640px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;
-			/* 	justify-content: space-between; */
-			margin-left: 40px;
+			justify-content: center;
 		}
 		p {
 			text-align: center;
