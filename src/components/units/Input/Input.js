@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 //Style
 import StyledInput from "./styles";
 
@@ -7,9 +8,7 @@ const Input = ({
 	type,
 	value,
 	onChange,
-	minlength,
 	disabled,
-	onKeyPress,
 	onFocus,
 	onBlur,
 	placeholder,
@@ -23,20 +22,18 @@ const Input = ({
 	errorText,
 	errorStyles,
 	className,
-	valid,
+	error,
 }) => {
 	return (
-		<>
-			<label style={{...labelStyles}} id={id}>
+		<div style={{...divStyles}}>
+			<label htmlFor={name} style={{...labelStyles}} id={id}>
 				{labelText}
 			</label>
 			<StyledInput
 				type={type}
 				value={value}
 				onChange={onChange}
-				minLength={minlength}
 				disabled={disabled}
-				onKeyPress={onKeyPress}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				placeholder={placeholder}
@@ -45,24 +42,20 @@ const Input = ({
 				id={id}
 				name={name}
 				style={{...inputStyles}}
-				className={`${className} ${valid ? "success" : "error"} ${
-					disabled ? "disabled" : ""
-				}`}
+				className={`${className}  ${error ? "error" : ""}  ${disabled ? "disabled" : ""}  `}
 			/>
-			{!valid ? (
-				<span style={{display: "block", ...errorStyles}}>
-					<div dangerouslySetInnerHTML={{__html: errorText}} />
-				</span>
+
+			{error ? (
+				<span dangerouslySetInnerHTML={{__html: errorText}} style={{...errorStyles}}></span>
 			) : null}
-		</>
+		</div>
 	);
 };
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	value: PropTypes.any,
 	onChange: PropTypes.func,
-	minlength: PropTypes.number,
-	disabled: PropTypes.bool,
+	disabled: PropTypes.string,
 	onClick: PropTypes.func,
 	onFocus: PropTypes.func,
 	onBlur: PropTypes.func,
@@ -73,10 +66,11 @@ Input.propTypes = {
 	name: PropTypes.string.isRequired,
 	inputStyles: PropTypes.object,
 	labelStyles: PropTypes.object,
-	errorText: PropTypes.string,
-	errorStyles: PropTypes.object,
+	errorText: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+	errorStyles: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	className: PropTypes.string,
-	valid: PropTypes.bool,
+	divStyles: PropTypes.object,
+	error: PropTypes.bool,
 };
 
 export default Input;

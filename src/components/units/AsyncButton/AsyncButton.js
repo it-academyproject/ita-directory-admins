@@ -65,7 +65,7 @@ AsyncButton.propTypes = {
 	//icon: PropTypes.object,
 	iconPosition: PropTypes.string,
 	className: PropTypes.string,
-	buttonStyles: PropTypes.string,
+	buttonStyles: PropTypes.object,
 	textStyles: PropTypes.string,
 	iconStyles: PropTypes.string,
 	animated: PropTypes.bool,
