@@ -8,6 +8,7 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
+import Footer from "layout/Footer/Footer";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	//input - state
@@ -50,7 +51,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const handleBlur = () => {
 		console.log("He pinchado fuera");
 	};
-
 	//button state
 	const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
@@ -173,7 +173,8 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 					marginLeft: 5,
 				}}
 				error={isPasswordError}
-				errorText=" "
+				errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
+				<span style='color: red'> STYLE </span>actualizarlo</p>"
 				errorStyles={{
 					width: 258,
 					height: 15,
@@ -183,7 +184,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 					color: "#909090",
 					opacity: 1,
 					padding: 10,
-					marginBottom: 20,
+					marginBottom: 80,
 					marginLeft: 10,
 				}}
 				className="success"
@@ -200,19 +201,19 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 				animated={animatedState}
 				disabled={disabledState}
 				onClick={handleClick}
-				buttonStyles={{marginLeft: 10, marginBottom: 10, marginRight: 40}}
+				buttonStyles={{marginLeft: 10, marginBottom: 30, marginRight: 40, marginTop: 20}}
 			/>
+			<Footer />
 		</StyledForm>
 	);
-};
-
-Login.propTypes = {
-	id: PropTypes.string,
-	name: PropTypes.string,
-	method: PropTypes.string,
-	action: PropTypes.string,
-	formStyle: PropTypes.object,
-	onSubmit: PropTypes.func,
+	Login.propTypes = {
+		id: PropTypes.string,
+		name: PropTypes.string,
+		method: PropTypes.string,
+		action: PropTypes.string,
+		formStyle: PropTypes.object,
+		onSubmit: PropTypes.func,
+	};
 };
 
 export default Login;

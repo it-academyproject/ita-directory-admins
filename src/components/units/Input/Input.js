@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+//Style
+import StyledInput from "./styles";
+import Colors from "theme/Colors";
 
 //Style
 import StyledInput from "./styles";
