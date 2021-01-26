@@ -10,6 +10,7 @@ const StyledForm = styled.form`
 	width: 40%;
 	boxsizing: border - box;
 	padding: 2rem;
+	margin: 2rem;
 `;
 
 export default StyledForm;

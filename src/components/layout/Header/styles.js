@@ -20,3 +20,11 @@ export const StyledHeaderTop = styled.div`
 		justify-content: space-between;
 	}
 `;
+
+export const StyledImg = styled.img`
+	width: 4vw;
+`;
+
+export const StyledDropdown = styled.div`
+
+`;
