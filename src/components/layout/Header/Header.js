@@ -1,7 +1,14 @@
 import React, {useState} from "react";
-import {StyledTitle, StyledHeaderTop, StyledImg, StyledDropdown} from "./styles";
+import {
+	StyledTitle,
+	StyledHeaderTop,
+	StyledImg,
+	StyledDropdown,
+	StyledLi,
+	StyledButton,
+} from "./styles";
 const profilePicSrc =
-	"https://thumbs.dreamstime.com/b/creative-vector-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mo-118823351.jpg";
+	"https://upload.wikimedia.org/wikipedia/commons/9/9e/Lion_%28Panthera_leo%29_male_6y.jpg";
 
 const Header = ({isLoggedIn, title}) => {
 	const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -14,18 +21,17 @@ const Header = ({isLoggedIn, title}) => {
 			<header>
 				<StyledHeaderTop className={`logged`}>
 					<span>Logo Empresa</span>
-					<div style={{position: "relative"}}>
-						<button onClick={handleClick}>
+					<div style={{position: "relative", display: "inline-block", minWidth: "10rem"}}>
+						<StyledButton onClick={handleClick}>
 							<StyledImg src={profilePicSrc} alt="profile" />
 							Mi perfil
-						</button>
+						</StyledButton>
 
-						{/* Dropdown!!! */}
 						{dropdownVisible ? (
 							<StyledDropdown>
-								<ul style={{listStyleType: "none", padding: "0 1rem"}}>
-									<li>Editar perfil</li>
-									<li>Cerrar sesión</li>
+								<ul style={{listStyleType: "none", padding: 0, margin: 0}}>
+									<StyledLi>Editar perfil</StyledLi>
+									<StyledLi>Cerrar sesión</StyledLi>
 								</ul>
 							</StyledDropdown>
 						) : null}

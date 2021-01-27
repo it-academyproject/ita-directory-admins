@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Colors from "theme/Colors";
 
 const StyledFooter = styled.footer`
-	@media only screen and (min-width: 640px) {
+	@media only screen and (min-width: 800px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;
@@ -29,7 +29,7 @@ const StyledFooter = styled.footer`
 			margin: 2px 15vw;
 		}
 	}
-	@media only screen and (max-width: 640px) {
+	@media only screen and (max-width: 800px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;

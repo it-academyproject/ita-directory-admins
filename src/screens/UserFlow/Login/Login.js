@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 //Styles
 import StyledForm from "./styles";
@@ -10,7 +11,7 @@ import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	//input - state
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
@@ -57,7 +58,20 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [disabledState, setdisabledState] = useState(false);
 	const [animatedState, setanimatedState] = useState(false);
 
-	//form method
+	//submit method
+
+	const users = [
+		{
+			email: "juan@mail.com",
+			password: "Juan1992",
+		},
+	];
+
+	const authenticateUser = (email, password) => {
+		if (users.email === email && users.password === password)
+			console.log("the user is correct");
+		else console.log("the user is incorrect");
+	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setloadingState(true);
@@ -65,13 +79,13 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 		setanimatedState(true);
 		try {
 			await new Promise((resolve) => setTimeout(resolve, 2000));
+			authenticateUser(userEmail, passwordInput);
 		} catch (err) {
 			console.log(err);
 		}
 		setloadingState(false);
 		setdisabledState(false);
 		setanimatedState(false);
-		console.log("submitted", userEmail, passwordInput);
 	};
 
 	//button
@@ -107,22 +121,8 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 							marginLeft: 10,
 							marginTop: 5,
 						}}
-						labelText="Introduce tu email:"
-						labelStyles={{
-							width: 297,
-							height: 40,
-							textAlign: "left",
-							font: "normal normal normal 14px/32px Helvetica Neue",
-							letterSpacing: 0,
-							color: "#4A4A4A",
-							opacity: 1,
-							paddingLeft: 10,
-							marginBottom: 5,
-							marginLeft: 5,
-						}}
 						error={isEmailError}
-						errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
-						<span style='color: red'> STYLE </span>actualizarlo</p>"
+						errorText="El formato de email no es válido"
 						errorStyles={{
 							width: 258,
 							height: 15,
@@ -150,23 +150,11 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onFocus={handleFocus}
 						onBlur={handleBlur}
 						inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
-						labelText="Introduce tu contrasena:"
-						labelStyles={{
-							width: 297,
-							height: 40,
-							textAlign: "left",
-							font: "normal normal normal 14px/32px Helvetica Neue",
-							letterSpacing: 0,
-							color: "#4A4A4A",
-							opacity: 1,
-							padding: 10,
-							marginBottom: 5,
-							marginLeft: 5,
-						}}
 						error={isPasswordError}
-						errorText=" "
+						errorText="La contraseña debe al menos un número y una mayúscula"
 						errorStyles={{
 							width: 258,
+							postion: "absolute",
 							height: 15,
 							textAlign: "left",
 							font: "italic normal normal 13px/32px Helvetica Neue",
@@ -193,6 +181,10 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onClick={handleClick}
 						buttonStyles={{marginLeft: 10, marginBottom: 10, marginRight: 40}}
 					/>
+					<Link to="/registration" className="link message">
+						{" "}
+						Ya estas registrado?
+					</Link>
 				</StyledForm>
 			</div>
 		</Body>

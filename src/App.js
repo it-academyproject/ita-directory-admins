@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {Route, Switch} from "react-router-dom";
 //Styles
-//import "App.css";
+import "App.css";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
 
@@ -12,7 +12,7 @@ import {Route, Switch} from "react-router-dom";
 // // Userflow
 import Login from "screens/UserFlow/Login/Login";
 import Portal from "screens/UserFlow/Portal/Portal";
-// import Registration from "screens/UserFlow/Registration";
+import Registration from "screens/UserFlow/Registration/Registration";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
@@ -28,19 +28,18 @@ const App = () => {
 		// 		flexDirection: "column",
 		// 	}}
 		// />
-		<div>
+		<div className="divApp">
 			<Switch>
 				{/* Userflow */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/portal" component={Portal} />
-				{/* <Route exact path="/registration" component={Registration} />
-			<Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
-
+				<Route exact path="/registration" component={Registration} />
+				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
 				{/* Caregiver */}
-				{/* <ProtectedRoute exact path="/" component={Home} />
+				{/* <ProtectedRoute exact path="/" component={Home} /> */}
 
-			<ProtectedRoute path="/chat" component={Chat} />
-			<ProtectedRoute component={Page404} /> */}
+				{/* <ProtectedRoute path="/chat" component={Chat} />
+			<ProtectedRoute component={Page404} />  */}
 			</Switch>
 		</div>
 	);
