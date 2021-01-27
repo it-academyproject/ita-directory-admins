@@ -26,5 +26,9 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledDropdown = styled.div`
-
+	position: relative;
+	top: 0;
+	left: 0;
+	text: center;
+	border: 1px solid ${Colors.lightGrey};
 `;

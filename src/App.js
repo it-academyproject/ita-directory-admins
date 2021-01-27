@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {Route, Switch} from "react-router-dom";
+//Styles
+//import "App.css";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
 
@@ -26,21 +28,21 @@ const App = () => {
 		// 		flexDirection: "column",
 		// 	}}
 		// />
-
-		<Switch>
-			{/* Userflow */}
-			<Route exact path="/login" component={Login} />
-			<Route exact path="/portal" component={Portal} />
-			{/* <Route exact path="/registration" component={Registration} />
+		<div>
+			<Switch>
+				{/* Userflow */}
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/portal" component={Portal} />
+				{/* <Route exact path="/registration" component={Registration} />
 			<Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
-		
 
-			{/* Caregiver */}
-			{/* <ProtectedRoute exact path="/" component={Home} />
+				{/* Caregiver */}
+				{/* <ProtectedRoute exact path="/" component={Home} />
 
 			<ProtectedRoute path="/chat" component={Chat} />
 			<ProtectedRoute component={Page404} /> */}
-		</Switch>
+			</Switch>
+		</div>
 	);
 };
 

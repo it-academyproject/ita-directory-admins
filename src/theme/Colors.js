@@ -10,5 +10,8 @@ const Colors = {
 	darkBlueColor: "rgba(7, 76, 132, 1)",
 	redColor: "rgba(193, 12, 12, 1)",
 	greyColor: "rgba(80, 77, 84, 1)",
+
+	// Borders
+	lightGrey: "#DDDDDD",
 };
 export default Colors;

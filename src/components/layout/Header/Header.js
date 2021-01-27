@@ -14,18 +14,22 @@ const Header = ({isLoggedIn, title}) => {
 			<header>
 				<StyledHeaderTop className={`logged`}>
 					<span>Logo Empresa</span>
-					<button onClick={handleClick}>
-						<StyledImg src={profilePicSrc} alt="profile" />
-						Mi perfil
-					</button>
-					{dropdownVisible ? (
-						<StyledDropdown>
-							<ul>
-								<li>Editar perfil</li>
-								<li>Cerrar sesión</li>
-							</ul>
-						</StyledDropdown>
-					) : null}
+					<div style={{position: "relative"}}>
+						<button onClick={handleClick}>
+							<StyledImg src={profilePicSrc} alt="profile" />
+							Mi perfil
+						</button>
+
+						{/* Dropdown!!! */}
+						{dropdownVisible ? (
+							<StyledDropdown>
+								<ul style={{listStyleType: "none", padding: "0 1rem"}}>
+									<li>Editar perfil</li>
+									<li>Cerrar sesión</li>
+								</ul>
+							</StyledDropdown>
+						) : null}
+					</div>
 				</StyledHeaderTop>
 				<StyledTitle className={`logged`}>
 					<h1>{title}</h1>
