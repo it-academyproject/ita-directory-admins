@@ -2,11 +2,12 @@ import styled from "styled-components";
 import Colors from "theme/Colors";
 
 const StyledFooter = styled.footer`
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: 800px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			padding: 2px 15vw;
 		}
 		p {
 			text-align: left;
@@ -24,12 +25,15 @@ const StyledFooter = styled.footer`
 			opacity: 1;
 			list-style-type: none;
 		}
+		hr {
+			margin: 2px 15vw;
+		}
 	}
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 800px) {
 		div {
 			display: flex;
 			flex-wrap: wrap;
-			/* 	justify-content: space-between; */
+			justify-content: center;
 		}
 		p {
 			text-align: center;
@@ -38,7 +42,7 @@ const StyledFooter = styled.footer`
 			color: ${Colors.blackColor};
 			text-transform: uppercase;
 			opacity: 1;
-			padding-left: 20px;
+			padding-left: 25px;
 		}
 		ul {
 			text-align: center;

@@ -1,8 +1,7 @@
-import React, {useState} from "react";
-import Login from "screens/UserFlow/Login/Login";
-import Header from "components/layout/Header/Header";
-import Footer from "layout/Footer/Footer";
-// import {Route, Switch} from "react-router-dom";
+import React from "react";
+import {Route, Switch} from "react-router-dom";
+//Styles
+import "App.css";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
 
@@ -11,40 +10,38 @@ import Footer from "layout/Footer/Footer";
 // import Page404 from "screens/404";
 
 // // Userflow
-// import Login from "screens/UserFlow/Login";
-// import Registration from "screens/UserFlow/Registration";
+import Login from "screens/UserFlow/Login/Login";
+import Portal from "screens/UserFlow/Portal/Portal";
+import Registration from "screens/UserFlow/Registration/Registration";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	return (
-		<>
-			<Header isLoggedIn={isLoggedIn} title="Título" />
-			<Login
-				id="formOne" //sera un MAP de Json file
-				name="formOne" //sera un MAP de Json file
-				method="post"
-				action="urlDestino"
-				formStyle={{
-					display: "flex",
-					flexDirection: "column",
-				}}
-			/>
-			<Footer />
-		</>
+		// <Login
+		// 	isLoggedIn={isLoggedIn}
+		// 	id="formOne" //sera un MAP de Json file
+		// 	name="formOne" //sera un MAP de Json file
+		// 	method="post"
+		// 	action="urlDestino"
+		// 	formStyle={{
+		// 		display: "flex",
+		// 		flexDirection: "column",
+		// 	}}
+		// />
+		<div className="divApp">
+			<Switch>
+				{/* Userflow */}
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/portal" component={Portal} />
+				<Route exact path="/registration" component={Registration} />
+				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
+				{/* Caregiver */}
+				{/* <ProtectedRoute exact path="/" component={Home} /> */}
 
-		// <Switch>
-		// 	{/* Userflow */}
-		// 	<Route exact path="/login" component={Login} />
-		// 	<Route exact path="/registration" component={Registration} />
-		// 	<Route exact path="/recover-password/:hash" component={RecoverPassword} />
-
-		// 	{/* Caregiver */}
-		// 	<ProtectedRoute exact path="/" component={Home} />
-
-		// 	<ProtectedRoute path="/chat" component={Chat} />
-		// 	<ProtectedRoute component={Page404} />
-		// </Switch>
+				{/* <ProtectedRoute path="/chat" component={Chat} />
+			<ProtectedRoute component={Page404} />  */}
+			</Switch>
+		</div>
 	);
 };
 

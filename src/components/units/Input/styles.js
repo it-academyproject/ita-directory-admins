@@ -6,6 +6,7 @@ const StyledInput = styled.input`
 	left: 492px;
 	width: 100%;
 	height: 40px;
+	border: 1px solid #DDDDDD;
 	border-radius: 6px;
 	opacity: 1;
 	outline: none; /* mientras escribes */
