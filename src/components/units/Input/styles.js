@@ -6,7 +6,7 @@ const StyledInput = styled.input`
 	left: 492px;
 	width: 100%;
 	height: 40px;
-	border: 1px solid #DDDDDD;
+	border: 1px solid #dddddd;
 	border-radius: 6px;
 	opacity: 1;
 	outline: none; /* mientras escribes */
@@ -17,11 +17,11 @@ const StyledInput = styled.input`
 	}
 	&.disabled {
 		background: #e7ebf0 0% 0% no-repeat padding-box;
-		border: 1px solid "#DDDDDD";
+		border: 2px solid "#DDDDDD";
 	}
 	&.error {
 		background: #ffffff 0% 0% no-repeat padding-box;
-		border: 1px solid ${Colors.redColor};
+		border: 1px solid #971132;
 	}
 `;
 

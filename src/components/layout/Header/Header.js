@@ -6,6 +6,10 @@ import {
 	StyledDropdown,
 	StyledLi,
 	StyledButton,
+	StyledMiPerfil,
+	StyledLogo,
+	StyledText,
+	StyledUl,
 } from "./styles";
 const profilePicSrc =
 	"https://upload.wikimedia.org/wikipedia/commons/9/9e/Lion_%28Panthera_leo%29_male_6y.jpg";
@@ -20,22 +24,22 @@ const Header = ({isLoggedIn, title}) => {
 		return (
 			<header>
 				<StyledHeaderTop className={`logged`}>
-					<span>Logo Empresa</span>
-					<div style={{position: "relative", display: "inline-block", minWidth: "10rem"}}>
+					<StyledLogo>Logo Empresa</StyledLogo>
+					<StyledMiPerfil>
 						<StyledButton onClick={handleClick}>
 							<StyledImg src={profilePicSrc} alt="profile" />
-							Mi perfil
+							<StyledText>Mi perfil</StyledText>
 						</StyledButton>
 
 						{dropdownVisible ? (
 							<StyledDropdown>
-								<ul style={{listStyleType: "none", padding: 0, margin: 0}}>
+								<StyledUl>
 									<StyledLi>Editar perfil</StyledLi>
 									<StyledLi>Cerrar sesión</StyledLi>
-								</ul>
+								</StyledUl>
 							</StyledDropdown>
 						) : null}
-					</div>
+					</StyledMiPerfil>
 				</StyledHeaderTop>
 				<StyledTitle className={`logged`}>
 					<h1>{title}</h1>

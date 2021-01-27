@@ -104,22 +104,20 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						inputStyles={{
 							padding: 10,
 							marginBottom: 5,
-							marginLeft: 10,
 							marginTop: 5,
 						}}
 						error={isEmailError}
-						errorText="El formato de email no es válido"
+						errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
 						errorStyles={{
-							width: 258,
-							height: 15,
-							textAlign: "left",
-							font: "italic normal normal 13px/32px Helvetica Neue",
+							textAlign: "justify",
+							fontWeight: "bold",
+							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
 							color: "#909090",
 							opacity: 1,
-							padding: 10,
-							marginBottom: 60,
-							marginLeft: 10,
+							padding: 5,
+							marginBottom: 5,
+							lineHeight: "1rem",
 						}}
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
@@ -135,21 +133,20 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						size={20}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
-						inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
+						inputStyles={{padding: 10, marginBottom: 5, marginTop: 5}}
 						error={isPasswordError}
-						errorText="La contraseña debe al menos un número y una mayúscula"
+						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
 						errorStyles={{
-							width: 258,
 							postion: "absolute",
-							height: 15,
-							textAlign: "left",
-							font: "italic normal normal 13px/32px Helvetica Neue",
+							textAlign: "justify",
+							fontWeight: "bold",
+							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
 							color: "#909090",
 							opacity: 1,
-							padding: 10,
-							marginBottom: 20,
-							marginLeft: 10,
+							padding: 5,
+							marginBottom: 5,
+							lineHeight: "1rem",
 						}}
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
@@ -165,7 +162,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						animated={animatedState}
 						disabled={disabledState}
 						onClick={handleClick}
-						buttonStyles={{marginLeft: 10, marginBottom: 10, marginRight: 40}}
+						buttonStyles={{marginTop: 10, marginBottom: 5}}
 					/>
 				</StyledForm>
 			</div>
