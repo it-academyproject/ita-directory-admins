@@ -8,7 +8,6 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Footer from "layout/Footer/Footer";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	//input - state
@@ -91,120 +90,126 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	};
 
 	return (
-		<StyledForm
-			id={id}
-			name={name}
-			className={className}
-			method={method}
-			onSubmit={(e) => handleSubmit(e)}
-			action={action}
-			formStyle={formStyle}
-			autocomplete="off"
-		>
-			<Input
-				type="email"
-				name="userEmail"
-				value={userEmail}
-				placeholder="Introduce tu email"
-				onChange={handleChange}
-				size={20}
-				onFocus={handleFocus}
-				onBlur={handleBlur}
-				inputStyles={{
-					padding: 10,
-					marginBottom: 5,
-					marginLeft: 10,
-					marginTop: 5,
-				}}
-				labelText="Introduce tu email:"
-				labelStyles={{
-					width: 297,
-					height: 40,
-					textAlign: "left",
-					font: "normal normal normal 14px/32px Helvetica Neue",
-					letterSpacing: 0,
-					color: "#4A4A4A",
-					opacity: 1,
-					paddingLeft: 10,
-					marginBottom: 5,
-					marginLeft: 5,
-				}}
-				error={isEmailError}
-				errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
+		<div style={{display: "flex", justifyContent: "center"}}>
+			<StyledForm
+				id={id}
+				name={name}
+				className={className}
+				method={method}
+				onSubmit={(e) => handleSubmit(e)}
+				action={action}
+				formStyle={formStyle}
+				autocomplete="off"
+			>
+				<Input
+					type="email"
+					name="userEmail"
+					value={userEmail}
+					placeholder="Introduce tu email"
+					onChange={handleChange}
+					size={20}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					inputStyles={{
+						padding: 10,
+						marginBottom: 5,
+						marginLeft: 10,
+						marginTop: 5,
+					}}
+					labelText="Introduce tu email:"
+					labelStyles={{
+						width: 297,
+						height: 40,
+						textAlign: "left",
+						font: "normal normal normal 14px/32px Helvetica Neue",
+						letterSpacing: 0,
+						color: "#4A4A4A",
+						opacity: 1,
+						paddingLeft: 10,
+						marginBottom: 5,
+						marginLeft: 5,
+					}}
+					error={isEmailError}
+					errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
 				<span style='color: red'> STYLE </span>actualizarlo</p>"
-				errorStyles={{
-					width: 258,
-					height: 15,
-					textAlign: "left",
-					font: "italic normal normal 13px/32px Helvetica Neue",
-					letterSpacing: 0,
-					color: "#909090",
-					opacity: 1,
-					padding: 10,
-					marginBottom: 60,
-					marginLeft: 10,
-				}}
-				className="success"
-				divStyles={{display: "flex", flexDirection: "column"}}
-				passwordError={isPasswordError}
-				/* disabled="disabled" */
-			/>
-			<Input
-				type="password"
-				name="passwordInput"
-				value={passwordInput}
-				onChange={handleChange}
-				placeholder="Introduce contrasena"
-				size={20}
-				onFocus={handleFocus}
-				onBlur={handleBlur}
-				inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
-				labelText="Introduce tu contrasena:"
-				labelStyles={{
-					width: 297,
-					height: 40,
-					textAlign: "left",
-					font: "normal normal normal 14px/32px Helvetica Neue",
-					letterSpacing: 0,
-					color: "#4A4A4A",
-					opacity: 1,
-					padding: 10,
-					marginBottom: 5,
-					marginLeft: 5,
-				}}
-				error={isPasswordError}
-				errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
+					errorStyles={{
+						width: 258,
+						height: 15,
+						textAlign: "left",
+						font: "italic normal normal 13px/32px Helvetica Neue",
+						letterSpacing: 0,
+						color: "#909090",
+						opacity: 1,
+						padding: 10,
+						marginBottom: 60,
+						marginLeft: 10,
+					}}
+					className="success"
+					divStyles={{display: "flex", flexDirection: "column"}}
+					passwordError={isPasswordError}
+					/* disabled="disabled" */
+				/>
+				<Input
+					type="password"
+					name="passwordInput"
+					value={passwordInput}
+					onChange={handleChange}
+					placeholder="Introduce contrasena"
+					size={20}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
+					labelText="Introduce tu contrasena:"
+					labelStyles={{
+						width: 297,
+						height: 40,
+						textAlign: "left",
+						font: "normal normal normal 14px/32px Helvetica Neue",
+						letterSpacing: 0,
+						color: "#4A4A4A",
+						opacity: 1,
+						padding: 10,
+						marginBottom: 5,
+						marginLeft: 5,
+					}}
+					error={isPasswordError}
+					errorText="<p>El email no se puede modificar.Ponte en <a href=#/users/123>Michael</a> si necesitas 
 				<span style='color: red'> STYLE </span>actualizarlo</p>"
-				errorStyles={{
-					width: 258,
-					height: 15,
-					textAlign: "left",
-					font: "italic normal normal 13px/32px Helvetica Neue",
-					letterSpacing: 0,
-					color: "#909090",
-					opacity: 1,
-					padding: 10,
-					marginBottom: 80,
-					marginLeft: 10,
-				}}
-				className="success"
-				divStyles={{display: "flex", flexDirection: "column"}}
-				/* disabled="disabled" */
-			/>
-			<AsyncButton
-				text="Acceder"
-				loadingText="Accediendo"
-				iconPosition="left"
-				type="submit"
-				className="primary"
-				isLoading={loadingState}
-				animated={animatedState}
-				disabled={disabledState}
-				onClick={handleClick}
-				buttonStyles={{marginLeft: 10, marginBottom: 30, marginRight: 40, marginTop: 20}}
-			/>
-			<Footer />
-		</StyledForm>
+					errorStyles={{
+						width: 258,
+						height: 15,
+						textAlign: "left",
+						font: "italic normal normal 13px/32px Helvetica Neue",
+						letterSpacing: 0,
+						color: "#909090",
+						opacity: 1,
+						padding: 10,
+						marginBottom: 80,
+						marginLeft: 10,
+					}}
+					className="success"
+					divStyles={{display: "flex", flexDirection: "column"}}
+					/* disabled="disabled" */
+				/>
+				<AsyncButton
+					text="Acceder"
+					loadingText="Accediendo"
+					iconPosition="left"
+					type="submit"
+					className="primary"
+					isLoading={loadingState}
+					animated={animatedState}
+					disabled={disabledState}
+					onClick={handleClick}
+					buttonStyles={{
+						marginLeft: 10,
+						marginBottom: 30,
+						marginRight: 40,
+						marginTop: 20,
+					}}
+				/>
+			</StyledForm>
+		</div>
 	);
 	Login.propTypes = {
 		id: PropTypes.string,

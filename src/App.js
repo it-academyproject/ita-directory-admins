@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Login from "screens/UserFlow/Login/Login";
 import Header from "components/layout/Header/Header";
+import Footer from "layout/Footer/Footer";
 // import {Route, Switch} from "react-router-dom";
 // import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
@@ -29,6 +30,7 @@ const App = () => {
 					flexDirection: "column",
 				}}
 			/>
+			<Footer />
 		</>
 
 		// <Switch>
