@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+
 //import PropTypes from "prop-types";
 
 //Styles
@@ -10,8 +11,8 @@ import Body from "components/layout/Body/Body";
 
 const Portal = () => {
 	return (
-		<Body>
-			<div>Portal</div>
+		<Body title="Portal">
+			<div></div>
 		</Body>
 	);
 };
