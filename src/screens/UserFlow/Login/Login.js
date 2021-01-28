@@ -13,19 +13,21 @@ import Body from "components/layout/Body/Body";
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	//input - state
+	const [userEmail, setUserEmail] = useState("");
+	const [passwordInput, setPasswordInput] = useState("");
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [userEmail, setUserEmail] = useState(""); // value - email
-	const [passwordInput, setPasswordInput] = useState(""); // value - contrasena
+	const [isAuthError, setIsAuthError] = useState(false);
+
 	//input
 	const validateEmail = (email) => {
-		let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		return regex.test(email) ? true : false;
+		const regexEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regexEmail.test(email) ? true : false;
 	};
 	//input
 	const validatePassword = (password) => {
-		var re = /[a-z]\d|\d[a-z]/i;
-		return re.test(password) && password.length > 3;
+		const regexPassword = /[a-z]\d|\d[a-z]/i;
+		return regexPassword.test(password) && password.length > 3;
 	};
 	//input - handleChange
 	const handleChange = (e) => {
@@ -33,24 +35,13 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 			setUserEmail(e.target.value); //value
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
-			console.log("Regex validate email: ", validateEmail, isEmail);
 			setIsEmailError(!isEmail); // logica inversa
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
 			setIsPasswordError(!isPassword); // logica inversa
-			console.log("validate Password: ", validatePassword, isPassword);
 		}
-	};
-
-	//input
-	const handleFocus = () => {
-		console.log("He pinchado dentro");
-	};
-
-	const handleBlur = () => {
-		console.log("He pinchado fuera");
 	};
 
 	//button state
@@ -59,18 +50,25 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [animatedState, setanimatedState] = useState(false);
 
 	//submit method
-
 	const users = [
 		{
 			email: "juan@mail.com",
 			password: "Juan1992",
 		},
+		{
+			email: "andrea@mail.com",
+			password: "Andrea1992",
+		},
 	];
 
-	const authenticateUser = (email, password) => {
-		if (users.email === email && users.password === password)
+	const authenticateUser = (userEmail, passwordInput) => {
+		if (users.includes(userEmail) && users.includes(passwordInput)) {
 			console.log("the user is correct");
-		else console.log("the user is incorrect");
+			localStorage.setItem("access-token", "itacademy");
+		} else {
+			console.log("the user is incorrect");
+			setIsAuthError(true);
+		}
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -88,14 +86,14 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 		setanimatedState(false);
 	};
 
-	//button
 	const handleClick = () => {
 		console.log("clicked");
 	};
 
 	return (
-		<Body title="página de login" isLoggedIn={isLoggedIn}>
-			<div style={{display: "flex", justifyContent: "center"}}>
+		<Body title="Acceso Admins" isLoggedIn={isLoggedIn}>
+			<div style={{display: "flex", justifyContent: "center", minHeight: "65vh"}}>
+				{isAuthError ? <div>Error autenticación</div> : null}
 				<StyledForm
 					id={id}
 					name={name}
@@ -113,14 +111,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						placeholder="Introduce tu email"
 						onChange={handleChange}
 						size={20}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{
-							padding: 10,
-							marginBottom: 5,
-							marginLeft: 10,
-							marginTop: 5,
-						}}
 						error={isEmailError}
 						errorText="El formato de email no es válido"
 						errorStyles={{
@@ -147,9 +137,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						placeholder="Introduce contrasena"
 						size={20}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
+						inputStyles={{margin: "1rem 0"}}
 						error={isPasswordError}
 						errorText="La contraseña debe al menos un número y una mayúscula"
 						errorStyles={{
@@ -179,11 +167,10 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						animated={animatedState}
 						disabled={disabledState}
 						onClick={handleClick}
-						buttonStyles={{marginLeft: 10, marginBottom: 10, marginRight: 40}}
+						buttonStyles={{margin: "1rem 0"}}
 					/>
 					<Link to="/registration" className="link message">
-						{" "}
-						Ya estas registrado?
+						Regístrate aquí
 					</Link>
 				</StyledForm>
 			</div>

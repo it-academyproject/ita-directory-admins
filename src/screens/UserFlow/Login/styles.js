@@ -7,11 +7,11 @@ const StyledForm = styled.form`
 	border: 1px solid #e2e2e2;
 	border-radius: 6px;
 	opacity: 1;
-	width: 40%;
+	width: 30%;
 	min-width: 15rem;
 	boxsizing: border - box;
 	padding: 2rem;
-	margin: 2rem;
+	margin: 4rem;
 `;
 
 export default StyledForm;

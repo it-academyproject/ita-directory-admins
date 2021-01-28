@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 //Styles
 import StyledForm from "./styles";
@@ -10,7 +11,7 @@ import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	//input - state
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
@@ -18,13 +19,13 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [passwordInput, setPasswordInput] = useState(""); // value - contrasena
 	//input
 	const validateEmail = (email) => {
-		let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		return regex.test(email) ? true : false;
+		const regexEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regexEmail.test(email) ? true : false;
 	};
 	//input
 	const validatePassword = (password) => {
-		var re = /[a-z]\d|\d[a-z]/i;
-		return re.test(password) && password.length > 3;
+		const regexPassword = /[a-z]\d|\d[a-z]/i;
+		return regexPassword.test(password) && password.length > 3;
 	};
 	//input - handleChange
 	const handleChange = (e) => {
@@ -41,15 +42,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 			setIsPasswordError(!isPassword); // logica inversa
 			console.log("validate Password: ", validatePassword, isPassword);
 		}
-	};
-
-	//input
-	const handleFocus = () => {
-		console.log("He pinchado dentro");
-	};
-
-	const handleBlur = () => {
-		console.log("He pinchado fuera");
 	};
 
 	//button state
@@ -80,8 +72,8 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	};
 
 	return (
-		<Body title="página de registro" isLoggedIn={isLoggedIn}>
-			<div style={{display: "flex", justifyContent: "center"}}>
+		<Body title="Registro Admins" isLoggedIn={isLoggedIn}>
+			<div style={{display: "flex", justifyContent: "center", minHeight: "65vh"}}>
 				<StyledForm
 					id={id}
 					name={name}
@@ -99,14 +91,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						placeholder="Introduce tu email"
 						onChange={handleChange}
 						size={20}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{
-							padding: 10,
-							marginBottom: 5,
-							marginLeft: 10,
-							marginTop: 5,
-						}}
 						error={isEmailError}
 						errorText="El formato de email no es válido"
 						errorStyles={{
@@ -131,11 +115,9 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						name="passwordInput"
 						value={passwordInput}
 						onChange={handleChange}
-						placeholder="Introduce contrasena"
+						placeholder="Introduce contraseña"
 						size={20}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{padding: 10, marginBottom: 5, marginLeft: 10, marginTop: 5}}
+						inputStyles={{margin: "1rem 0"}}
 						error={isPasswordError}
 						errorText="La contraseña debe al menos un número y una mayúscula"
 						errorStyles={{
@@ -156,8 +138,8 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						/* disabled="disabled" */
 					/>
 					<AsyncButton
-						text="Acceder"
-						loadingText="Accediendo"
+						text="Registro"
+						loadingText="Registrando"
 						iconPosition="left"
 						type="submit"
 						className="primary"
@@ -165,8 +147,11 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						animated={animatedState}
 						disabled={disabledState}
 						onClick={handleClick}
-						buttonStyles={{marginLeft: 10, marginBottom: 10, marginRight: 40}}
+						buttonStyles={{margin: "1rem 0"}}
 					/>
+					<Link to="/registration" className="link message">
+						¿Ya estás registrado? Inicia sesión aquí
+					</Link>
 				</StyledForm>
 			</div>
 		</Body>
