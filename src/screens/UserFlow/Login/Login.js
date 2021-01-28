@@ -11,6 +11,29 @@ import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
+// USERS
+const USERS = [
+	{
+		email: "juan@mail.com",
+		password: "Juan1992",
+	},
+];
+
+const authenticateUser = (email, password) => {
+	let authenticated = false;
+	for (let i = 0; i < USERS.length; i++) {
+		const user = USERS[i];
+		if (user.email === email && user.password === password) {
+			authenticated = true;
+		}
+	}
+	if (authenticated) {
+		console.log("HEMOS ENCONTRADO AL USUARIO");
+	} else {
+		console.error("NO EXISTE, NO HEMOS ENCONTRADO AL USUARIO");
+	}
+};
+
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	//input
@@ -56,18 +79,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 
 	//submit method
 
-	const users = [
-		{
-			email: "itacademy@mail.com",
-			password: "itacademy2021",
-		},
-	];
-
-	const authenticateUser = (email, password) => {
-		if (users.email === email && users.password === password)
-			console.log("the user is correct");
-		else console.log("the user is incorrect");
-	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setloadingState(true);
