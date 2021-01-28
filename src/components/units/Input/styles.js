@@ -6,22 +6,22 @@ const StyledInput = styled.input`
 	left: 492px;
 	width: 100%;
 	height: 40px;
-	border: 1px solid #dddddd;
+	border: 1px solid ${Colors.lightGrey};
 	border-radius: 6px;
 	opacity: 1;
-	outline: none; /* mientras escribes */
+	outline: none;
 
 	&.success {
-		background: #ffffff 0% 0% no-repeat padding-box;
-		border: 1px solid "#DDDDDD";
+		background: ${Colors.whiteColor}; 0% 0% no-repeat padding-box;
+		border: 1px solid ${Colors.lightGrey};
 	}
 	&.disabled {
-		background: #e7ebf0 0% 0% no-repeat padding-box;
-		border: 2px solid "#DDDDDD";
+		background: ${Colors.disabledColor} 0% 0% no-repeat padding-box;
+		border: 2px solid ${Colors.lightGrey};
 	}
 	&.error {
-		background: #ffffff 0% 0% no-repeat padding-box;
-		border: 1px solid #971132;
+		background: ${Colors.whiteColor} 0% 0% no-repeat padding-box;
+		border: 1px solid ${Colors.darkRedColor};
 	}
 `;
 
