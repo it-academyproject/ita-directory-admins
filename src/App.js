@@ -17,17 +17,6 @@ import Registration from "screens/UserFlow/Registration/Registration";
 
 const App = () => {
 	return (
-		// <Login
-		// 	isLoggedIn={isLoggedIn}
-		// 	id="formOne" //sera un MAP de Json file
-		// 	name="formOne" //sera un MAP de Json file
-		// 	method="post"
-		// 	action="urlDestino"
-		// 	formStyle={{
-		// 		display: "flex",
-		// 		flexDirection: "column",
-		// 	}}
-		// />
 		<div className="divApp">
 			<Switch>
 				{/* Userflow */}

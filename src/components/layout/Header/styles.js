@@ -49,7 +49,7 @@ export const StyledLogo = styled.div`
 	text-align: left;
 	font: normal normal normal 18px Korb-Bold;
 	letter-spacing: 0px;
-	color: #005593;
+	color: ${Colors.headerBlue};
 	text-transform: uppercase;
 	opacity: 1;
 	justify-conten: flex-end;
@@ -69,7 +69,7 @@ export const StyledText = styled.h6`
 	text-align: left;
 	font: normal normal normal 12px Helvetica Neue;
 	letter-spacing: 0px;
-	color: #707070;
+	color: ${Colors.headerGrey};
 	margin-left: 4px;
 	opacity: 1;
 `;
@@ -79,8 +79,8 @@ export const StyledDropdown = styled.div`
 	padding: 0;
 	z-index: 1;
 	text: center;
-	background: #ffffff 0% 0% no-repeat padding-box;
-	border: 1px solid #dddddd;
+	background: ${Colors.whiteColor} 0% 0% no-repeat padding-box;
+	border: 1px solid ${Colors.lightGrey};
 	border-radius: 6px 6px 0px 0px;
 	opacity: 1;
 `;
@@ -93,7 +93,7 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledLi = styled.li`
-	border: 1px solid #dddd;
+	border: 1px solid ${Colors.lightGrey};
 	padding-top: 10px;
 	align-items: center;
 	text-align: center;
@@ -113,8 +113,8 @@ export const StyledButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #ffffff 0% 0% no-repeat padding-box;
-	box-shadow: 0px 4px 8px #00000029;
+	background: ${Colors.white} 0% 0% no-repeat padding-box;
+	box-shadow: 0px 4px 8px ${Colors.boxShadow};
 	border: none;
 	border-radius: 10px;
 	opacity: 1;

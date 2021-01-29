@@ -22,7 +22,7 @@ const StyledFooter = styled.footer`
 			text-align: right;
 			font: normal normal normal 12px Helvetica Neue;
 			letter-spacing: 0;
-			color: #4a4a4a;
+			color: ${Colors.ulColor};
 			opacity: 1;
 			list-style-type: none;
 		}

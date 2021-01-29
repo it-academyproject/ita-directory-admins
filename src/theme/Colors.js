@@ -13,5 +13,20 @@ const Colors = {
 
 	// Borders
 	lightGrey: "#DDDDDD",
+
+	//Input
+	darkRedColor: "#971132",
+	disabledColor: "#e7ebf0",
+
+	//Login
+	boxShadow: "#00000029",
+	borderColor: "#e2e2e2",
+
+	//Footer
+	ulColor: " #4a4a4a",
+
+	//Header
+	headerBlue: "#005593",
+	headerGrey: "#707070",
 };
 export default Colors;
