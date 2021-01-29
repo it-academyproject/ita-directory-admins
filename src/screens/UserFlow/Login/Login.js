@@ -9,6 +9,7 @@ import StyledForm from "./styles";
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
+import {blue} from "@material-ui/core/colors";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -112,18 +113,17 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						size={20}
 						error={isEmailError}
-						errorText="El formato de email no es válido"
+						errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
 						errorStyles={{
-							width: 258,
-							height: 15,
-							textAlign: "left",
-							font: "italic normal normal 13px/32px Helvetica Neue",
+							textAlign: "justify",
+							fontWeight: "bold",
+							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
 							color: "#909090",
 							opacity: 1,
-							padding: 10,
-							marginBottom: 60,
-							marginLeft: 10,
+							padding: 5,
+							marginBottom: 5,
+							lineHeight: "1rem",
 						}}
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
@@ -137,21 +137,26 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						placeholder="Introduce contrasena"
 						size={20}
+<<<<<<< HEAD
 						inputStyles={{margin: "1rem 0"}}
+=======
+						onFocus={handleFocus}
+						onBlur={handleBlur}
+						inputStyles={{padding: 10, marginBottom: 5, marginTop: 5}}
+>>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 						error={isPasswordError}
-						errorText="La contraseña debe al menos un número y una mayúscula"
+						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
 						errorStyles={{
-							width: 258,
 							postion: "absolute",
-							height: 15,
-							textAlign: "left",
-							font: "italic normal normal 13px/32px Helvetica Neue",
+							textAlign: "justify",
+							fontWeight: "bold",
+							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
 							color: "#909090",
 							opacity: 1,
-							padding: 10,
-							marginBottom: 20,
-							marginLeft: 10,
+							padding: 5,
+							marginBottom: 5,
+							lineHeight: "1rem",
 						}}
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
@@ -167,10 +172,29 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						animated={animatedState}
 						disabled={disabledState}
 						onClick={handleClick}
+<<<<<<< HEAD
 						buttonStyles={{margin: "1rem 0"}}
 					/>
 					<Link to="/registration" className="link message">
 						Regístrate aquí
+=======
+						buttonStyles={{marginTop: 10, marginBottom: 5}}
+					/>
+					<Link
+						to="/registration"
+						className="link message"
+						style={{textDecoration: "none"}}
+					>
+						{" "}
+						<h6
+							style={{
+								textAlign: "center",
+								font: "italic normal normal 15px Helvetica Neue",
+							}}
+						>
+							¿Ya estás registrado?
+						</h6>
+>>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 					</Link>
 				</StyledForm>
 			</div>
