@@ -91,16 +91,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						placeholder="Introduce tu email"
 						onChange={handleChange}
 						size={20}
-<<<<<<< HEAD
-=======
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{
-							padding: 10,
-							marginBottom: 5,
-							marginTop: 5,
-						}}
->>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 						error={isEmailError}
 						errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
 						errorStyles={{
@@ -126,13 +116,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						placeholder="Introduce contraseña"
 						size={20}
-<<<<<<< HEAD
 						inputStyles={{margin: "1rem 0"}}
-=======
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{padding: 10, marginBottom: 5, marginTop: 5}}
->>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 						error={isPasswordError}
 						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
 						errorStyles={{

@@ -137,13 +137,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						placeholder="Introduce contrasena"
 						size={20}
-<<<<<<< HEAD
 						inputStyles={{margin: "1rem 0"}}
-=======
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						inputStyles={{padding: 10, marginBottom: 5, marginTop: 5}}
->>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 						error={isPasswordError}
 						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
 						errorStyles={{
@@ -172,29 +166,10 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						animated={animatedState}
 						disabled={disabledState}
 						onClick={handleClick}
-<<<<<<< HEAD
 						buttonStyles={{margin: "1rem 0"}}
 					/>
 					<Link to="/registration" className="link message">
 						Regístrate aquí
-=======
-						buttonStyles={{marginTop: 10, marginBottom: 5}}
-					/>
-					<Link
-						to="/registration"
-						className="link message"
-						style={{textDecoration: "none"}}
-					>
-						{" "}
-						<h6
-							style={{
-								textAlign: "center",
-								font: "italic normal normal 15px Helvetica Neue",
-							}}
-						>
-							¿Ya estás registrado?
-						</h6>
->>>>>>> e1abd3ddcf3a8cd1c008a662374da739bdf1392a
 					</Link>
 				</StyledForm>
 			</div>
