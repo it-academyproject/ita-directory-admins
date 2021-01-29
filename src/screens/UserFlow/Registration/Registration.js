@@ -71,16 +71,21 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 			//
 			USERS.push({email: userEmail, password: passwordInput});
 			console.log("USERS", USERS);
+
+			//
+			/* localStorage.setItem("TOKEN", "Itacademy"); */
+
+			//
+			!localStorage.getItem("TOKEN") && localStorage.setItem("TOKEN", "Itacademy");
+
 			await new Promise((resolve) => setTimeout(resolve, 2000));
 			//
 			console.log("localStorage", localStorage);
-
-			await new Promise((resolve) => setTimeout(resolve, 2000));
 		} catch (err) {
 			console.log(err);
 		}
 		//
-		window.localStorage.clear();
+		/* window.localStorage.clear(); */
 
 		setloadingState(false);
 		setdisabledState(false);
