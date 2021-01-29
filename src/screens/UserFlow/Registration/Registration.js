@@ -1,74 +1,95 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import USERS from "components/data/data";
 
 //Styles
-import StyledForm from "./styles";
+import {StyledForm, StyledRegistration} from "./styles";
+import Colors from "theme/Colors";
 
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/composed/layout/Body/Body";
 
-const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	//input - state
+//
+import useLocalStorage from "components/data/storage";
+
+const Registration = ({id, name, className, method, action, formStyle, onSubmit}) => {
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [userEmail, setUserEmail] = useState(""); // value - email
-	const [passwordInput, setPasswordInput] = useState(""); // value - contrasena
-	//input
+	//
+	const [userEmail, setUserEmail] = useLocalStorage("email", "");
+	const [passwordInput, setPasswordInput] = useLocalStorage("password", "");
+
 	const validateEmail = (email) => {
 		const regexEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		return regexEmail.test(email) ? true : false;
 	};
-	//input
+
 	const validatePassword = (password) => {
 		const regexPassword = /[a-z]\d|\d[a-z]/i;
 		return regexPassword.test(password) && password.length > 3;
 	};
-	//input - handleChange
+
 	const handleChange = (e) => {
 		if (e.target.name === "userEmail") {
-			setUserEmail(e.target.value); //value
+			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
 			console.log("Regex validate email: ", validateEmail, isEmail);
-			setIsEmailError(!isEmail); // logica inversa
+			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
-			setIsPasswordError(!isPassword); // logica inversa
+			setIsPasswordError(!isPassword);
 			console.log("validate Password: ", validatePassword, isPassword);
 		}
 	};
 
-	//button state
+	//button
 	const [loadingState, setloadingState] = useState(false);
 	const [disabledState, setdisabledState] = useState(false);
 	const [animatedState, setanimatedState] = useState(false);
 
-	//form method
+	const handleClick = () => {
+		console.log("clicked");
+	};
+
+	//submit method
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setloadingState(true);
 		setdisabledState(true);
 		setanimatedState(true);
+
 		try {
+			//
+			USERS.push({email: userEmail, password: passwordInput});
+			console.log("USERS", USERS);
+
+			//
+			/* localStorage.setItem("TOKEN", "Itacademy"); */
+
+			//
+			!localStorage.getItem("TOKEN") && localStorage.setItem("TOKEN", "Itacademy");
+
 			await new Promise((resolve) => setTimeout(resolve, 2000));
+			//
+			console.log("localStorage", localStorage);
 		} catch (err) {
 			console.log(err);
 		}
+		//
+		/* window.localStorage.clear(); */
+
 		setloadingState(false);
 		setdisabledState(false);
 		setanimatedState(false);
-		console.log("submitted", userEmail, passwordInput);
-	};
-
-	//button
-	const handleClick = () => {
-		console.log("clicked");
 	};
 
 	return (
@@ -92,13 +113,13 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onChange={handleChange}
 						size={20}
 						error={isEmailError}
-						errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
+						errorText="<p>Introduce una dirección de correo electrónico válido.</p>"
 						errorStyles={{
 							textAlign: "justify",
 							fontWeight: "bold",
 							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
-							color: "#909090",
+							color: `${Colors.darkRedColor}`,
 							opacity: 1,
 							padding: 5,
 							marginBottom: 5,
@@ -107,7 +128,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
 						passwordError={isPasswordError}
-						/* disabled="disabled" */
 					/>
 					<Input
 						type="password"
@@ -118,14 +138,14 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						size={20}
 						inputStyles={{margin: "1rem 0"}}
 						error={isPasswordError}
-						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
+						errorText="<p>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
 						errorStyles={{
 							postion: "absolute",
 							textAlign: "justify",
 							fontWeight: "bold",
 							font: "italic normal normal 12px Helvetica Neue",
 							letterSpacing: 0,
-							color: "#909090",
+							color: `${Colors.darkRedColor}`,
 							opacity: 1,
 							padding: 5,
 							marginBottom: 5,
@@ -133,7 +153,6 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						}}
 						className="success"
 						divStyles={{display: "flex", flexDirection: "column"}}
-						/* disabled="disabled" */
 					/>
 					<AsyncButton
 						text="Registro"
@@ -147,8 +166,10 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onClick={handleClick}
 						buttonStyles={{margin: "1rem 0"}}
 					/>
-					<Link to="/registration" className="link message">
-						¿Ya estás registrado? Inicia sesión aquí
+
+					<Link to="/login" className="link message" style={{textDecoration: "none"}}>
+						{" "}
+						<StyledRegistration>¿Ya estás registrado?</StyledRegistration>
 					</Link>
 				</StyledForm>
 			</div>
@@ -156,7 +177,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	);
 };
 
-Login.propTypes = {
+Registration.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	method: PropTypes.string,
@@ -165,4 +186,4 @@ Login.propTypes = {
 	onSubmit: PropTypes.func,
 };
 
-export default Login;
+export default Registration;

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 //Style
 import StyledFooter from "./styles";
-import Colors from "theme/Colors";
 
 const Footer = () => {
 	return (
