@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import USERS from "components/data/data";
 
 //Styles
 import {StyledForm, StyledRegistration} from "./styles";
@@ -11,13 +12,17 @@ import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
-const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
+//
+import useLocalStorage from "components/data/storage";
+
+const Registration = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [userEmail, setUserEmail] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
+	//
+	const [userEmail, setUserEmail] = useLocalStorage("email", "");
+	const [passwordInput, setPasswordInput] = useLocalStorage("password", "");
 
 	const validateEmail = (email) => {
 		let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -56,29 +61,27 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 
 	//submit method
 
-	const users = [
-		{
-			email: "juan@mail.com",
-			password: "Juan1992",
-		},
-	];
-
-	const authenticateUser = (email, password) => {
-		if (users.email === email && users.password === password)
-			console.log("the user is correct");
-		else console.log("the user is incorrect");
-	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setloadingState(true);
 		setdisabledState(true);
 		setanimatedState(true);
+
 		try {
+			//
+			USERS.push({email: userEmail, password: passwordInput});
+			console.log("USERS", USERS);
 			await new Promise((resolve) => setTimeout(resolve, 2000));
-			authenticateUser(userEmail, passwordInput);
+			//
+			console.log("localStorage", localStorage);
+
+			await new Promise((resolve) => setTimeout(resolve, 2000));
 		} catch (err) {
 			console.log(err);
 		}
+		//
+		window.localStorage.clear();
+
 		setloadingState(false);
 		setdisabledState(false);
 		setanimatedState(false);
@@ -163,21 +166,17 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 						onClick={handleClick}
 						buttonStyles={{marginTop: 10, marginBottom: 5}}
 					/>
-					<Link
-						to="/registration"
-						className="link message"
-						style={{textDecoration: "none"}}
-					>
+
+					<Link to="/login" className="link message" style={{textDecoration: "none"}}>
 						{" "}
-						<StyledRegistration>¿No estás registrado?</StyledRegistration>
+						<StyledRegistration>¿Ya estás registrado?</StyledRegistration>
 					</Link>
 				</StyledForm>
 			</div>
 		</Body>
 	);
 };
-
-Login.propTypes = {
+Registration.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	method: PropTypes.string,
@@ -186,4 +185,4 @@ Login.propTypes = {
 	onSubmit: PropTypes.func,
 };
 
-export default Login;
+export default Registration;

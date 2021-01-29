@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
+//Data
+import USERS from "components/data/data";
+
 //Styles
 import {StyledForm, StyledRegistration} from "./styles";
 import Colors from "theme/Colors";
@@ -10,14 +13,6 @@ import Colors from "theme/Colors";
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
-
-// USERS
-const USERS = [
-	{
-		email: "juan@mail.com",
-		password: "Juan1992",
-	},
-];
 
 const authenticateUser = (email, password) => {
 	let authenticated = false;
@@ -34,7 +29,7 @@ const authenticateUser = (email, password) => {
 	}
 };
 
-const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
+const Login = ({id, name, className, method, action, formStyle, USERS, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
