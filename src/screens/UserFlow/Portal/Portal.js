@@ -7,7 +7,7 @@ import React, {useState} from "react";
 
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
-import Body from "components/layout/Body/Body";
+import Body from "components/composed/layout/Body/Body";
 
 const Portal = () => {
 	return (

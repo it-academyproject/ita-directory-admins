@@ -2,11 +2,11 @@ import React from "react";
 import {Route, Switch} from "react-router-dom";
 //Styles
 import "App.css";
-// import ProtectedRoute from "components/composed/ProtectedRoute";
+import ProtectedRoute from "components/composed/ProtectedRoute";
 // import axios from "axios";
 
 // Pages
-// import Home from "screens/Home";
+import Home from "screens/Home/Home";
 // import Page404 from "screens/404";
 
 // // Userflow
@@ -36,7 +36,7 @@ const App = () => {
 				<Route exact path="/registration" component={Registration} />
 				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
 				{/* Caregiver */}
-				{/* <ProtectedRoute exact path="/" component={Home} /> */}
+				<ProtectedRoute exact path="/" component={Home} />
 
 				{/* <ProtectedRoute path="/chat" component={Chat} />
 			<ProtectedRoute component={Page404} />  */}

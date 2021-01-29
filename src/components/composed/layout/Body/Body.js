@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "components/layout/Header/Header";
-import Footer from "components/layout/Footer/Footer";
+import Header from "components/composed/layout/Header/Header";
+import Footer from "components/composed/layout/Footer/Footer";
 
 //Style
 import StyledBody from "./styles";

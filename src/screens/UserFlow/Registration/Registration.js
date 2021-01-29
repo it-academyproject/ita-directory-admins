@@ -8,7 +8,7 @@ import StyledForm from "./styles";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Body from "components/layout/Body/Body";
+import Body from "components/composed/layout/Body/Body";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);

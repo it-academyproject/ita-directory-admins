@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 //Styles
 import StyledForm from "./styles";
@@ -8,8 +8,7 @@ import StyledForm from "./styles";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Body from "components/layout/Body/Body";
-import {blue} from "@material-ui/core/colors";
+import Body from "components/composed/layout/Body/Body";
 
 const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,7 +17,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [passwordInput, setPasswordInput] = useState("");
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [isAuthError, setIsAuthError] = useState(false);
+	const [isAuthOk, setIsAuthOk] = useState(false);
 
 	//input
 	const validateEmail = (email) => {
@@ -63,12 +62,12 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	];
 
 	const authenticateUser = (userEmail, passwordInput) => {
-		if (users.includes(userEmail) && users.includes(passwordInput)) {
+		if (userEmail === users[1].email) {
+			setIsAuthOk(true);
 			console.log("the user is correct");
-			localStorage.setItem("access-token", "itacademy");
+			localStorage.setItem("token", "itacademy");
 		} else {
 			console.log("the user is incorrect");
-			setIsAuthError(true);
 		}
 	};
 	const handleSubmit = async (e) => {
@@ -77,7 +76,7 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 		setdisabledState(true);
 		setanimatedState(true);
 		try {
-			await new Promise((resolve) => setTimeout(resolve, 2000));
+			await new Promise((resolve) => setTimeout(resolve, 1000));
 			authenticateUser(userEmail, passwordInput);
 		} catch (err) {
 			console.log(err);
@@ -91,89 +90,98 @@ const Login = ({id, name, className, method, action, formStyle, onSubmit}) => {
 		console.log("clicked");
 	};
 
+	useEffect(() => {
+		console.log(isAuthOk);
+		if(isAuthOk){
+			return (<Redirect to="/" />);
+		}
+	}, [isAuthOk]);
+
 	return (
-		<Body title="Acceso Admins" isLoggedIn={isLoggedIn}>
-			<div style={{display: "flex", justifyContent: "center", minHeight: "65vh"}}>
-				{isAuthError ? <div>Error autenticación</div> : null}
-				<StyledForm
-					id={id}
-					name={name}
-					className={className}
-					method={method}
-					onSubmit={(e) => handleSubmit(e)}
-					action={action}
-					formStyle={formStyle}
-					autocomplete="off"
-				>
-					<Input
-						type="email"
-						name="userEmail"
-						value={userEmail}
-						placeholder="Introduce tu email"
-						onChange={handleChange}
-						size={20}
-						error={isEmailError}
-						errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
-						errorStyles={{
-							textAlign: "justify",
-							fontWeight: "bold",
-							font: "italic normal normal 12px Helvetica Neue",
-							letterSpacing: 0,
-							color: "#909090",
-							opacity: 1,
-							padding: 5,
-							marginBottom: 5,
-							lineHeight: "1rem",
-						}}
-						className="success"
-						divStyles={{display: "flex", flexDirection: "column"}}
-						passwordError={isPasswordError}
-						/* disabled="disabled" */
-					/>
-					<Input
-						type="password"
-						name="passwordInput"
-						value={passwordInput}
-						onChange={handleChange}
-						placeholder="Introduce contrasena"
-						size={20}
-						inputStyles={{margin: "1rem 0"}}
-						error={isPasswordError}
-						errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
-						errorStyles={{
-							postion: "absolute",
-							textAlign: "justify",
-							fontWeight: "bold",
-							font: "italic normal normal 12px Helvetica Neue",
-							letterSpacing: 0,
-							color: "#909090",
-							opacity: 1,
-							padding: 5,
-							marginBottom: 5,
-							lineHeight: "1rem",
-						}}
-						className="success"
-						divStyles={{display: "flex", flexDirection: "column"}}
-						/* disabled="disabled" */
-					/>
-					<AsyncButton
-						text="Acceder"
-						loadingText="Accediendo"
-						iconPosition="left"
-						type="submit"
-						className="primary"
-						isLoading={loadingState}
-						animated={animatedState}
-						disabled={disabledState}
-						onClick={handleClick}
-						buttonStyles={{margin: "1rem 0"}}
-					/>
-					<Link to="/registration" className="link message">
-						Regístrate aquí
-					</Link>
-				</StyledForm>
-			</div>
-		</Body>
+		<>
+			{/* {isAuthOk ? <Redirect to="/" /> : null} */}
+			<Body title="Acceso Admins" isLoggedIn={isLoggedIn}>
+				<div style={{display: "flex", justifyContent: "center", minHeight: "65vh"}}>
+					<StyledForm
+						id={id}
+						name={name}
+						className={className}
+						method={method}
+						onSubmit={(e) => handleSubmit(e)}
+						action={action}
+						formStyle={formStyle}
+						autocomplete="off"
+					>
+						<Input
+							type="email"
+							name="userEmail"
+							value={userEmail}
+							placeholder="Introduce tu email"
+							onChange={handleChange}
+							size={20}
+							error={isEmailError}
+							errorText="<p style='color: #971132'>Introduce una dirección de correo electrónico válido.</p>"
+							errorStyles={{
+								textAlign: "justify",
+								fontWeight: "bold",
+								font: "italic normal normal 12px Helvetica Neue",
+								letterSpacing: 0,
+								color: "#909090",
+								opacity: 1,
+								padding: 5,
+								marginBottom: 5,
+								lineHeight: "1rem",
+							}}
+							className="success"
+							divStyles={{display: "flex", flexDirection: "column"}}
+							passwordError={isPasswordError}
+							/* disabled="disabled" */
+						/>
+						<Input
+							type="password"
+							name="passwordInput"
+							value={passwordInput}
+							onChange={handleChange}
+							placeholder="Introduce contrasena"
+							size={20}
+							inputStyles={{margin: "1rem 0"}}
+							error={isPasswordError}
+							errorText="<p style='color: #971132'>La contraseña debe tener al menos 4 caracteres e incluir al menos una letra y un número.</p>"
+							errorStyles={{
+								postion: "absolute",
+								textAlign: "justify",
+								fontWeight: "bold",
+								font: "italic normal normal 12px Helvetica Neue",
+								letterSpacing: 0,
+								color: "#909090",
+								opacity: 1,
+								padding: 5,
+								marginBottom: 5,
+								lineHeight: "1rem",
+							}}
+							className="success"
+							divStyles={{display: "flex", flexDirection: "column"}}
+							/* disabled="disabled" */
+						/>
+						<AsyncButton
+							text="Acceder"
+							loadingText="Accediendo"
+							iconPosition="left"
+							type="submit"
+							className="primary"
+							isLoading={loadingState}
+							animated={animatedState}
+							disabled={disabledState}
+							onClick={handleClick}
+							buttonStyles={{margin: "1rem 0"}}
+						/>
+						<Link to="/registration" className="link message">
+							Regístrate aquí
+						</Link>
+					</StyledForm>
+				</div>
+			</Body>
+		</>
 	);
 };
 
