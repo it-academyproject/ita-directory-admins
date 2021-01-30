@@ -11,7 +11,6 @@ import Home from "screens/Home/Home";
 
 // // Userflow
 import Login from "screens/UserFlow/Login/Login";
-import Portal from "screens/UserFlow/Portal/Portal";
 import Registration from "screens/UserFlow/Registration/Registration";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
@@ -21,7 +20,6 @@ const App = () => {
 			<Switch>
 				{/* Userflow */}
 				<Route exact path="/login" component={Login} />
-				<Route exact path="/portal" component={Portal} />
 				<Route exact path="/registration" component={Registration} />
 				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
 				{/* Caregiver */}

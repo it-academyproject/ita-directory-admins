@@ -10,8 +10,10 @@ import Body from "components/composed/layout/Body/Body";
 
 const Home = () => {
 	return (
-		<Body title="Home">
-			<div></div>
+		<Body title="Usuarios registrados" isLoggedIn={true}>
+			<div style={{display: "flex", justifyContent: "center"}}>
+				
+			</div>
 		</Body>
 	);
 };
