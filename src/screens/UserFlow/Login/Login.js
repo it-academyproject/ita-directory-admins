@@ -12,7 +12,7 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Body from "components/composed/layout/Body/Body";
+import Body from "components/layout/Body/Body";
 
 const authenticateUser = (email, password) => {
 	let authenticated = false;
@@ -23,12 +23,9 @@ const authenticateUser = (email, password) => {
 		}
 	}
 	if (authenticated) {
-		console.log("HEMOS ENCONTRADO AL USUARIO");
 		localStorage.setItem("itacademy", "ok");
-		console.log(localStorage);
 		return true;
 	} else {
-		console.error("NO EXISTE, NO HEMOS ENCONTRADO AL USUARIO");
 		return false;
 	}
 };
@@ -38,14 +35,14 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [userEmail, setUserEmail] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const errorStyles = {
 		postion: "absolute",
 		textAlign: "justify",
 		fontWeight: "bold",
-		font: "italic normal normal 12px Helvetica",
+		font: "italic normal normal 12px",
 		letterSpacing: 0,
 		color: `${Colors.darkRedColor}`,
 		opacity: 1,
@@ -65,16 +62,16 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 	};
 
 	const handleChange = (e) => {
-		if (e.target.name === "userEmail") {
-			setUserEmail(e.target.value);
+		if (e.target.name === "email") {
+			setEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
 			setIsEmailError(!isEmail);
-		} else if (e.target.name === "passwordInput") {
-			setPasswordInput(e.target.value);
+		} else if (e.target.name === "password") {
+			setPassword(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
-			setIsPasswordError(!isPassword); 
+			setIsPasswordError(!isPassword);
 		}
 	};
 
@@ -96,7 +93,7 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 		setanimatedState(true);
 		try {
 			await new Promise((resolve) => setTimeout(resolve, 1000));
-			setIsLoggedIn(authenticateUser(userEmail, passwordInput));
+			setIsLoggedIn(authenticateUser(email, password));
 		} catch (err) {
 			console.log(err);
 		}
@@ -122,8 +119,8 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 					>
 						<Input
 							type="email"
-							name="userEmail"
-							value={userEmail}
+							name="email"
+							value={email}
 							placeholder="Introduce tu email"
 							onChange={handleChange}
 							size={20}
@@ -141,8 +138,8 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 						/>
 						<Input
 							type="password"
-							name="passwordInput"
-							value={passwordInput}
+							name="password"
+							value={password}
 							onChange={handleChange}
 							placeholder="Introduce tu contraseña"
 							size={20}
