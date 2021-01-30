@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import USERS from "components/data/data";
+//
+import USERS from "data/data.js";
 
 //Styles
 import {StyledForm, StyledRegistration} from "./styles";
@@ -12,17 +13,14 @@ import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
-//
-import useLocalStorage from "components/data/storage";
-
 const Registration = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
 	//
-	const [userEmail, setUserEmail] = useLocalStorage("email", "");
-	const [passwordInput, setPasswordInput] = useLocalStorage("password", "");
+	const [userEmail, setUserEmail] = useState("");
+	const [passwordInput, setPasswordInput] = useState("");
 
 	const validateEmail = (email) => {
 		let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -39,14 +37,16 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
-			console.log("Regex validate email: ", validateEmail, isEmail);
+			//
+			console.log(isEmail);
 			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
 			setIsPasswordError(!isPassword);
-			console.log("validate Password: ", validatePassword, isPassword);
+			//
+			console.log(isPassword);
 		}
 	};
 
@@ -68,13 +68,16 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 		setanimatedState(true);
 
 		try {
-			//
-			USERS.push({email: userEmail, password: passwordInput});
-			console.log("USERS", USERS);
+			// Guardar todos los usuarios
+			if (!localStorage.getItem("users")) {
+				USERS.push({email: userEmail});
 
-			//
-			/* localStorage.setItem("TOKEN", "Itacademy"); */
-
+				localStorage.setItem("users", JSON.stringify(USERS));
+			} else {
+				const currentUsers = JSON.parse(localStorage.getItem("users"));
+				currentUsers.push({email: userEmail});
+				localStorage.setItem("users", JSON.stringify(USERS));
+			}
 			//
 			!localStorage.getItem("TOKEN") && localStorage.setItem("TOKEN", "Itacademy");
 
@@ -85,7 +88,7 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 			console.log(err);
 		}
 		//
-		/* window.localStorage.clear(); */
+		window.localStorage.clear();
 
 		setloadingState(false);
 		setdisabledState(false);

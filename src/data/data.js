@@ -1,4 +1,3 @@
-// USERS
 const USERS = [
 	{
 		email: "itacademy@mail.com",

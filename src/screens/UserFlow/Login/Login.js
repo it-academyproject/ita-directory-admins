@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 //Data
-import USERS from "components/data/data";
+import USERS from "data/data";
 
 //Styles
 import {StyledForm, StyledRegistration} from "./styles";
@@ -20,6 +20,8 @@ const authenticateUser = (email, password) => {
 		const user = USERS[i];
 		if (user.email === email && user.password === password) {
 			authenticated = true;
+
+			localStorage.setItem("TOKEN", "Itacademy");
 		}
 	}
 	if (authenticated) {
@@ -52,14 +54,16 @@ const Login = ({id, name, className, method, action, formStyle, USERS, onSubmit}
 			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
-			console.log("Regex validate email: ", validateEmail, isEmail);
+			//
+			console.log(isEmail);
 			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
 			setIsPasswordError(!isPassword);
-			console.log("validate Password: ", validatePassword, isPassword);
+			//
+			console.log(isPassword);
 		}
 	};
 
