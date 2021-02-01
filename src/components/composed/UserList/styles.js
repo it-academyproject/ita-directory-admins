@@ -31,3 +31,10 @@ export const StyledItem = styled.div`
 	text-align: left;
 	flex: 1;
 `;
+
+export const StyledImg = styled.img`
+	border-radius: 50%;
+	margin: 0 5px;
+	width: 35px;
+	height: 35px;
+`;
