@@ -1,11 +1,13 @@
 import React from "react";
-import UserList from "components/composed/UserList/UserList"
+
+//import PropTypes from "prop-types";
 
 //Styles
 //import StyledForm from "./styles";
 
 //Components
 import Body from "components/layout/Body/Body";
+import UserList from "components/UserList/UserList";
 
 const Home = () => {
 	return (

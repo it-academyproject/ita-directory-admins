@@ -85,8 +85,9 @@ const Registration = ({id, name, className, method, action, formStyle}) => {
 				currentUsers.push({email: email, password: password});
 				localStorage.setItem("users", JSON.stringify(currentUsers));
 			}
-			//
+
 			await new Promise((resolve) => setTimeout(resolve, 2000));
+			localStorage.setItem("itacademy", "ok");
 			setIsRegistered(true);
 		} catch (err) {
 			console.log(err);

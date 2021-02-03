@@ -73,7 +73,7 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 			setPassword(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
-			setIsPasswordError(!isPassword);
+			setIsPasswordError(!isPassword); 
 		}
 	};
 
