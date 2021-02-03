@@ -6,7 +6,7 @@ import ProtectedRoute from "./components/composed/ProtectedRoute/index";
 // import axios from "axios";
 
 // Pages
-// import Home from "screens/Home";
+import Home from "screens/Home/Home.js";
 // import Page404 from "screens/404";
 
 // // Userflow
@@ -22,7 +22,7 @@ const App = () => {
 			<Switch>
 				{/* Userflow */}
 
-				{/* <ProtectedRoute exact path="/" component={Home} /> */}
+				<ProtectedRoute exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/portal" component={Portal} />
 				<Route exact path="/registration" component={Registration} />
