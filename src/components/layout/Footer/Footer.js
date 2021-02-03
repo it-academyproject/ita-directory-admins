@@ -14,7 +14,7 @@ const Footer = () => {
 				</p>
 				<ul>
 					<li>&copy; miempresa.com</li>
-					<li>todos los derechos reservados</li>
+					<li>Todos los derechos reservados</li>
 					<li>Aviso Legal &ndash; Privacidad &ndash; Cookies</li>
 				</ul>
 			</div>

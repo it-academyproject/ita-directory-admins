@@ -13,7 +13,7 @@ const Home = () => {
 	return (
 		<Body title="Usuarios registrados" isLoggedIn={true}>
 			<div style={{display: "flex", justifyContent: "center"}}>
-				<UserList />;
+				<UserList />
 			</div>
 		</Body>
 	);

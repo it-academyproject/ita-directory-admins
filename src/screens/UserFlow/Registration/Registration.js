@@ -14,19 +14,19 @@ import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
 import Body from "components/layout/Body/Body";
 
-const Registration = ({id, name, className, method, action, formStyle, onSubmit}) => {
+const Registration = ({id, name, className, method, action, formStyle}) => {
 	const [isRegistered, setIsRegistered] = useState(false);
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-	const [userEmail, setUserEmail] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const errorStyles = {
 		postion: "absolute",
 		textAlign: "justify",
 		fontWeight: "bold",
-		font: "italic normal normal 12px Helvetica",
+		font: "italic normal normal 12px",
 		letterSpacing: 0,
 		color: `${Colors.darkRedColor}`,
 		opacity: 1,
@@ -46,13 +46,13 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 	};
 
 	const handleChange = (e) => {
-		if (e.target.name === "userEmail") {
-			setUserEmail(e.target.value);
+		if (e.target.name === "email") {
+			setEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
 			setIsEmailError(!isEmail);
-		} else if (e.target.name === "passwordInput") {
-			setPasswordInput(e.target.value);
+		} else if (e.target.name === "password") {
+			setPassword(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
 			setIsPasswordError(!isPassword);
@@ -77,15 +77,13 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 		setanimatedState(true);
 
 		try {
-			// Guardar todos los usuarios
 			if (!localStorage.getItem("users")) {
-				USERS.push({email: userEmail});
-
+				USERS.push({email: email, password: password});
 				localStorage.setItem("users", JSON.stringify(USERS));
 			} else {
 				const currentUsers = JSON.parse(localStorage.getItem("users"));
-				currentUsers.push({email: userEmail});
-				localStorage.setItem("users", JSON.stringify(USERS));
+				currentUsers.push({email: email, password: password});
+				localStorage.setItem("users", JSON.stringify(currentUsers));
 			}
 
 			await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -117,8 +115,8 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 					>
 						<Input
 							type="email"
-							name="userEmail"
-							value={userEmail}
+							name="email"
+							value={email}
 							placeholder="Introduce tu email"
 							onChange={handleChange}
 							size={20}
@@ -131,8 +129,8 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 						/>
 						<Input
 							type="password"
-							name="passwordInput"
-							value={passwordInput}
+							name="password"
+							value={password}
 							onChange={handleChange}
 							placeholder="Introduce contraseña"
 							size={20}

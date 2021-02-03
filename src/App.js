@@ -26,7 +26,6 @@ const App = () => {
 				<Route exact path="/registration" component={Registration} />
 				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
 				{/* Caregiver */}
-
 				{/* <ProtectedRoute path="/chat" component={Chat} />
 			<ProtectedRoute component={Page404} />  */}
 			</Switch>

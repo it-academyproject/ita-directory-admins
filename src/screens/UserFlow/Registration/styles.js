@@ -16,5 +16,5 @@ export const StyledForm = styled.form`
 
 export const StyledRegistration = styled.p`
 	text-align: center;
-	font: italic normal normal 15px Helvetica;
+	font: italic normal normal 15px;
 `;

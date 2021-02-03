@@ -12,7 +12,7 @@ const StyledFooter = styled.footer`
 		}
 		p {
 			text-align: left;
-			font: normal normal normal 15px/15px Korb-Bold;
+			font: normal normal normal 15px;
 			letter-spacing: 0px;
 			color: ${Colors.blackColor};
 			text-transform: "uppercase";
@@ -20,7 +20,7 @@ const StyledFooter = styled.footer`
 		}
 		ul {
 			text-align: right;
-			font: normal normal normal 12px Helvetica Neue;
+			font: normal normal normal 12px;
 			letter-spacing: 0;
 			color: ${Colors.ulColor};
 			opacity: 1;
@@ -40,8 +40,7 @@ const StyledFooter = styled.footer`
 		}
 		p {
 			text-align: left;
-			font: normal normal normal 15px/15px Korb-Bold;
-			letter-spacing: 0px;
+			font: normal normal normal 15px;
 			color: ${Colors.blackColor};
 			text-transform: uppercase;
 			opacity: 1;
@@ -50,7 +49,7 @@ const StyledFooter = styled.footer`
 		}
 		ul {
 			text-align: right;
-			font: normal normal normal 12px Helvetica Neue;
+			font: normal normal normal 12px;
 			letterspacing: 0;
 			color: #4a4a4a;
 			opacity: 1;
@@ -74,7 +73,7 @@ const StyledFooter = styled.footer`
 		}
 		p {
 			text-align: center;
-			font: normal normal normal 15px/15px Korb-Bold;
+			font: normal normal normal 15px;
 			letter-spacing: 0px;
 			color: ${Colors.blackColor};
 			text-transform: uppercase;
@@ -84,7 +83,7 @@ const StyledFooter = styled.footer`
 		}
 		ul {
 			text-align: center;
-			font: normal normal normal 12px Helvetica Neue;
+			font: normal normal normal 12px;
 			letterspacing: 0;
 			color: #4a4a4a;
 			opacity: 1;

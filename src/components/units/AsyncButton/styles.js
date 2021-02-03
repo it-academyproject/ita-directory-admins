@@ -8,7 +8,7 @@ const StyledButton = styled.button`
 	opacity: 1;
 	padding: 0.25rem 1rem;
 	text-align: center;
-	font: normal normal normal 15px/22px Helvetica Neue;
+	font: normal normal normal 15px/22px;
 	letter-spacing: 0px;
 	width: 100%;
 
