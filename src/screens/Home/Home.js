@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 
 //import PropTypes from "prop-types";
 
@@ -16,6 +17,14 @@ const Home = () => {
 			</div>
 		</Body>
 	);
+=======
+import UserList from "components/UserList/UserList";
+
+import {ViewWeek} from "@material-ui/icons";
+
+const Home = () => {
+	return <UserList />;
+>>>>>>> develop
 };
 
 export default Home;

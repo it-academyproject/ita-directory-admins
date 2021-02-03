@@ -20,6 +20,8 @@ const authenticateUser = (email, password) => {
 		const user = USERS[i];
 		if (user.email === email && user.password === password) {
 			authenticated = true;
+
+			localStorage.setItem("TOKEN", "Itacademy");
 		}
 	}
 	if (authenticated) {
@@ -69,12 +71,23 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
+<<<<<<< HEAD
+=======
+			//
+			console.log(isEmail);
+>>>>>>> develop
 			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
+<<<<<<< HEAD
 			setIsPasswordError(!isPassword); 
+=======
+			setIsPasswordError(!isPassword);
+			//
+			console.log(isPassword);
+>>>>>>> develop
 		}
 	};
 
