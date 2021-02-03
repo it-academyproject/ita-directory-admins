@@ -15,16 +15,17 @@ import Registration from "screens/UserFlow/Registration/Registration";
 // import RecoverPassword from "screens/UserFlow/RecoverPassword";
 
 const App = () => {
+	//const [token, setToken] = useState();
 	return (
 		<div className="divApp">
 			<Switch>
 				{/* Userflow */}
+
+				<ProtectedRoute exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/registration" component={Registration} />
 				{/* <Route exact path="/recover-password/:hash" component={RecoverPassword} />  */}
 				{/* Caregiver */}
-				<ProtectedRoute exact path="/" component={Home} />
-
 				{/* <ProtectedRoute path="/chat" component={Chat} />
 			<ProtectedRoute component={Page404} />  */}
 			</Switch>

@@ -20,6 +20,8 @@ const authenticateUser = (email, password) => {
 		const user = USERS[i];
 		if (user.email === email && user.password === password) {
 			authenticated = true;
+
+			localStorage.setItem("TOKEN", "Itacademy");
 		}
 	}
 	if (authenticated) {
