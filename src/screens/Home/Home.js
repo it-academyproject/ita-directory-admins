@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 
 //import PropTypes from "prop-types";
 
@@ -7,24 +6,17 @@ import React from "react";
 //import StyledForm from "./styles";
 
 //Components
-import Body from "components/composed/layout/Body/Body";
+import Body from "components/layout/Body/Body";
+import UserList from "components/UserList/UserList";
 
 const Home = () => {
 	return (
 		<Body title="Usuarios registrados" isLoggedIn={true}>
 			<div style={{display: "flex", justifyContent: "center"}}>
-				
+				<UserList />;
 			</div>
 		</Body>
 	);
-=======
-import UserList from "components/UserList/UserList";
-
-import {ViewWeek} from "@material-ui/icons";
-
-const Home = () => {
-	return <UserList />;
->>>>>>> develop
 };
 
 export default Home;

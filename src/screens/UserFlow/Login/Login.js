@@ -12,7 +12,7 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-import Body from "components/composed/layout/Body/Body";
+import Body from "components/layout/Body/Body";
 
 const authenticateUser = (email, password) => {
 	let authenticated = false;
@@ -71,23 +71,12 @@ const Login = ({id, name, className, method, action, formStyle}) => {
 			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
-<<<<<<< HEAD
-=======
-			//
-			console.log(isEmail);
->>>>>>> develop
 			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
-<<<<<<< HEAD
 			setIsPasswordError(!isPassword); 
-=======
-			setIsPasswordError(!isPassword);
-			//
-			console.log(isPassword);
->>>>>>> develop
 		}
 	};
 

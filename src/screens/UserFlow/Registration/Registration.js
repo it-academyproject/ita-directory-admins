@@ -1,15 +1,9 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
 import {Link, Redirect} from "react-router-dom";
 
 //Data
 import USERS from "data/data";
-=======
-import {Link} from "react-router-dom";
-//
-import USERS from "data/data.js";
->>>>>>> develop
 
 //Styles
 import {StyledForm, StyledRegistration} from "./styles";
@@ -18,18 +12,13 @@ import Colors from "theme/Colors";
 //Components
 import AsyncButton from "components/units/AsyncButton/AsyncButton";
 import Input from "components/units/Input/Input";
-<<<<<<< HEAD
-import Body from "components/composed/layout/Body/Body";
-=======
 import Body from "components/layout/Body/Body";
->>>>>>> develop
 
 const Registration = ({id, name, className, method, action, formStyle, onSubmit}) => {
 	const [isRegistered, setIsRegistered] = useState(false);
 	//input
 	const [isEmailError, setIsEmailError] = useState(false);
 	const [isPasswordError, setIsPasswordError] = useState(false);
-<<<<<<< HEAD
 	const [userEmail, setUserEmail] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
 
@@ -45,11 +34,6 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 		marginBottom: 5,
 		lineHeight: "1rem",
 	};
-=======
-	//
-	const [userEmail, setUserEmail] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
->>>>>>> develop
 
 	const validateEmail = (email) => {
 		const regexEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -66,22 +50,12 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 			setUserEmail(e.target.value);
 			const val = e.target.value;
 			const isEmail = validateEmail(val);
-<<<<<<< HEAD
-=======
-			//
-			console.log(isEmail);
->>>>>>> develop
 			setIsEmailError(!isEmail);
 		} else if (e.target.name === "passwordInput") {
 			setPasswordInput(e.target.value);
 			const password = e.target.value;
 			const isPassword = validatePassword(password);
 			setIsPasswordError(!isPassword);
-<<<<<<< HEAD
-=======
-			//
-			console.log(isPassword);
->>>>>>> develop
 		}
 	};
 
@@ -103,9 +77,6 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 		setanimatedState(true);
 
 		try {
-<<<<<<< HEAD
-			//
-=======
 			// Guardar todos los usuarios
 			if (!localStorage.getItem("users")) {
 				USERS.push({email: userEmail});
@@ -116,22 +87,13 @@ const Registration = ({id, name, className, method, action, formStyle, onSubmit}
 				currentUsers.push({email: userEmail});
 				localStorage.setItem("users", JSON.stringify(USERS));
 			}
-			//
-			!localStorage.getItem("TOKEN") && localStorage.setItem("TOKEN", "Itacademy");
 
->>>>>>> develop
 			await new Promise((resolve) => setTimeout(resolve, 2000));
-			USERS.push({email: userEmail, password: passwordInput});
 			localStorage.setItem("itacademy", "ok");
 			setIsRegistered(true);
 		} catch (err) {
 			console.log(err);
 		}
-<<<<<<< HEAD
-=======
-		//
-		window.localStorage.clear();
->>>>>>> develop
 
 		setloadingState(false);
 		setdisabledState(false);
