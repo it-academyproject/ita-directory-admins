@@ -7,14 +7,14 @@ export const StyledForm = styled.form`
 	border: 1px solid ${Colors.borderColor};
 	border-radius: 6px;
 	opacity: 1;
-	width: 50%;
+	width: 40vw;
 	min-width: 15rem;
 	boxsizing: border - box;
 	padding: 2rem;
-	margin: 2rem;
+	margin: 4rem;
 `;
 
-export const StyledRegistration = styled.h6`
+export const StyledRegistration = styled.p`
 	text-align: center;
-	font: italic normal normal 15px Helvetica Neue;
+	font: italic normal normal 15px;
 `;

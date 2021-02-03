@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+
+//Styles
 import {
 	StyledTitle,
 	StyledHeaderTop,
@@ -6,7 +8,7 @@ import {
 	StyledDropdown,
 	StyledLi,
 	StyledButton,
-	StyledMiPerfil,
+	StyledProfile,
 	StyledLogo,
 	StyledText,
 	StyledUl,
@@ -14,32 +16,46 @@ import {
 const profilePicSrc =
 	"https://upload.wikimedia.org/wikipedia/commons/9/9e/Lion_%28Panthera_leo%29_male_6y.jpg";
 
+//
 const Header = ({isLoggedIn, title}) => {
 	const [dropdownVisible, setDropdownVisible] = useState(false);
+
 	const handleClick = () => {
-		console.log("profile clicked");
 		setDropdownVisible(!dropdownVisible);
 	};
+	document.addEventListener("mousedown", (e) => {
+		let arr = [...document.getElementsByClassName("dropdown")];
+		if (!arr.includes(e.target)) {
+			setDropdownVisible(false);
+		}
+	});
+
 	if (isLoggedIn) {
 		return (
 			<header>
 				<StyledHeaderTop className={`logged`}>
-					<StyledLogo>Logo Empresa</StyledLogo>
-					<StyledMiPerfil>
-						<StyledButton onClick={handleClick}>
-							<StyledImg src={profilePicSrc} alt="profile" />
-							<StyledText>Mi perfil</StyledText>
+					<StyledLogo>
+						<p>Logo Empresa</p>
+					</StyledLogo>
+					<StyledProfile>
+						<StyledButton onClick={handleClick} className="dropdown">
+							<StyledImg src={profilePicSrc} alt="profile" className="dropdown" />
+							<StyledText className="dropdown">Mi perfil</StyledText>
 						</StyledButton>
 
 						{dropdownVisible ? (
 							<StyledDropdown>
 								<StyledUl>
-									<StyledLi>Editar perfil</StyledLi>
-									<StyledLi>Cerrar sesión</StyledLi>
+									<StyledLi className="dropdown">
+										<a href="/">Editar perfil</a>
+									</StyledLi>
+									<StyledLi className="dropdown" style={{color: "red"}}>
+										<a href="/">Cerrar sesión</a>
+									</StyledLi>
 								</StyledUl>
 							</StyledDropdown>
 						) : null}
-					</StyledMiPerfil>
+					</StyledProfile>
 				</StyledHeaderTop>
 				<StyledTitle className={`logged`}>
 					<h1>{title}</h1>
